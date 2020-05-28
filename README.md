@@ -43,7 +43,7 @@ Possible examples:
 * Who works for Nestle?
 * Show all persons who live in the USA. 
 
-Note that more advanced example on 3 real-world datasets tested with Bio-SODA are available at the demo page [here](http://biosoda.expasy.org/welcome/).
+Note that more advanced example on 3 real-world datasets tested with Bio-SODA are available at the demo page [here](http://biosoda.expasy.org/welcome/). A detailed analysis of results across multiple systems tested with the 3 datasets, part of our VLDB submission, is available in the [Evaluation](https://github.com/anazhaw/Bio-SODA/tree/master/Evaluation) folder.
 
 We thank Lukas Blunschi for the code base of [SODA](https://dl.acm.org/doi/10.14778/2336664.2336667), which was the foundation for the development of Bio-SODA.
 
