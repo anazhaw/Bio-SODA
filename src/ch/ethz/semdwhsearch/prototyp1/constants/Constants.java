@@ -81,8 +81,8 @@ public class Constants {
 	public static final String MODEL_NAME = "sample";
 	
 	public static final boolean USE_REMOTE = true;
-	public static final String REMOTE_REPO = "http://160.85.254.15:7200/repositories/CompanyEmployeeSampleData";
-	public static final String PAGERANK_REPO = "http://160.85.254.15:7200/repositories/page-ranks";
+	public static final String REMOTE_REPO = "http://biosoda.expasy.org:7200/repositories/CompanyEmployeeSampleData";
+	public static final String PAGERANK_REPO = "http://biosoda.expasy.org:7200/repositories/sample_page_ranks";
 
 	// -------------------------------------------------------- parameter names
 
