@@ -1,0 +1,109 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tto: <http://example.org/tuto/ontology#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - 
+# Classes
+# - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+#Classes are written with initial uppercase letter
+
+dbo:Person
+	rdf:type rdfs:Class .
+
+dbo:Employee
+	rdfs:subClassOf dbo:Person .
+	 
+dbo:Company
+	rdf:type rdfs:Class .
+
+dbo:Address
+	rdf:type rdfs:Class .
+
+dbo:Phone
+	rdf:type rdfs:Class .
+	
+
+	
+# - - - - - - - - - - - - - - - - - - - - - - - - - - 
+# Properties
+# - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+
+tto:firstName
+	rdf:type rdfs:Property;
+	rdfs:label "First Name"^^xsd:string;
+	rdfs:domain dbo:Person;
+	 .	 
+	 	 
+tto:companyName
+	rdf:type rdfs:Property;
+	rdfs:label "Company Name"^^xsd:string;
+	rdfs:domain dbo:Company;
+	 .	 
+
+tto:street
+	rdf:type rdfs:Property;
+	rdfs:label "Street Name"^^xsd:string;
+	rdfs:domain dbo:Address;
+	 .	 
+
+tto:houseNumber
+	rdf:type rdfs:Property;
+	rdfs:label "House Number"^^xsd:string;
+	rdfs:domain dbo:Address;
+	 .	 
+
+tto:zipCode
+	rdf:type rdfs:Property;
+	rdfs:label "Post Code"^^xsd:string;
+	rdfs:domain dbo:Address;
+	 .	 
+
+tto:city
+	rdf:type rdfs:Property;
+	rdfs:label "City"^^xsd:string;
+	rdfs:domain dbo:Address;
+	 .	 
+
+tto:livesAt
+	rdf:type rdfs:Property;
+	rdfs:label "lives at"^^xsd:string;
+	rdfs:domain dbo:Person;
+	rdfs:range dbo:Address;
+	.	
+	
+tto:location
+	rdf:type rdfs:Property;
+	rdfs:label "location"^^xsd:string;
+	rdfs:domain dbo:Company;
+	rdfs:range dbo:Address;
+	.
+	
+tto:worksFor
+	rdf:type rdfs:Property;
+	rdfs:label "works for"^^xsd:string;
+	rdfs:domain dbo:Employee;
+	rdfs:range dbo:Company;
+	.
+
+tto:phoneNumber
+	rdf:type rdfs:Property;
+	rdfs:domain dbo:Phone;
+	.	
+
+tto:companyReachableAt 
+	rdf:type rdfs:Property;
+	rdfs:label "reachable at"^^xsd:string;
+	rdfs:domain dbo:Company;
+	rdfs:range dbo:Phone;
+	.
+
+tto:personReachableAt 
+	rdf:type rdfs:Property;
+	rdfs:label "reachable at"^^xsd:string;
+	rdfs:domain dbo:Person;
+	rdfs:range dbo:Phone;
+	.
+

@@ -1,0 +1,260 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tto: <http://example.org/tuto/ontology#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+tto:ABB
+	rdf:type dbo:Company;
+	tto:companyName "Asea Brown Boveri";
+	tto:location tto:AddressABB;
+	tto:companyReachableAt tto:PhoneNumberABB;
+	.
+
+tto:Nestle
+	rdf:type dbo:Company;
+	tto:companyName "Nestle";
+	tto:location tto:AddressNestle;
+	tto:companyReachableAt tto:PhoneNumberNestle;
+	.
+	
+tto:SBB
+	rdf:type dbo:Company; 
+	tto:companyName "Schweizerische Bundesbahnen";
+	tto:location tto:AddressSBB;
+	tto:companyReachableAt tto:PhoneNumberSBB;	
+	.
+
+tto:ZHAW
+	rdf:type dbo:Company;
+	tto:companyName "Zürcher Hochschule für Angewandte Wissenschaften";
+	tto:location tto:AddressZHAW;
+	tto:companyReachableAt tto:PhoneNumberZHAW;
+	.
+	
+tto:Kate
+	rdf:type dbo:Employee ;
+	tto:firstName "Kate" ;
+	tto:worksFor tto:Nestle ;
+	tto:worksFor tto:ABB ;
+	tto:livesAt tto:AddressKate;
+	tto:personReachableAt tto:PhoneNumberKate;
+	.
+
+tto:Claire
+	rdf:type dbo:Person ;
+	tto:firstName "Claire" ;
+	tto:livesAt tto:AddressClaire;
+	tto:personReachableAt tto:PhoneNumberClaire;
+	.
+
+tto:Thomas
+	rdf:type dbo:Employee ;
+	tto:firstName "Thomas" ;
+	tto:worksFor tto:Nestle;
+	tto:worksFor tto:SBB;
+	tto:livesAt tto:AddressThomas;
+	tto:personReachableAt tto:PhoneNumberThomas;
+	.
+	
+tto:Joseph
+	rdf:type dbo:Employee ;
+	tto:firstName "Joseph" ;
+	tto:worksFor tto:ZHAW ;
+	tto:livesAt tto:AddressJoseph;
+	tto:personReachableAt tto:PhoneNumberJoseph;
+	.
+	
+tto:James
+	rdf:type dbo:Employee ;
+	tto:firstName "James" ;
+	tto:worksFor tto:ZHAW ;
+	tto:worksFor tto:Nestle ;
+	tto:livesAt tto:AddressJames;
+	tto:personReachableAt tto:PhoneNumberJames;
+	.
+
+tto:Colette
+	rdf:type dbo:Employee ;
+	tto:firstName "Colette" ;
+	tto:worksFor tto:ABB ; 
+	tto:livesAt tto:AddressHome;
+	tto:personReachableAt tto:PhoneNumberHome;
+	.
+	
+tto:Colleen
+	rdf:type dbo:Person ;
+	tto:firstName "Colleen" ;
+	tto:livesAt tto:AddressHome;
+	tto:personReachableAt tto:PhoneNumberHome;
+	.
+	
+tto:Gregory
+	rdf:type dbo:Person ;
+	tto:firstName "Gregory" ;
+	tto:livesAt tto:AddressHome;
+	tto:personReachableAt tto:PhoneNumberHome;
+	.
+
+tto:Corinne
+	rdf:type dbo:Person ;
+	tto:firstName "Corinne" ;
+	tto:livesAt tto:AddressHome;
+	tto:personReachableAt tto:PhoneNumberHome;
+	.
+	
+tto:Maximillian
+	rdf:type dbo:Person ;
+	tto:firstName "Maximillian" ;
+	tto:livesAt tto:AddressHome;
+	tto:personReachableAt tto:PhoneNumberHome;
+	.
+	
+tto:AddressKate
+	rdf:type dbo:Address;
+	tto:houseNumber "200";
+	tto:street "Birmensdorferstrasse";
+	tto:zipCode "8047";
+	tto:city "Zürich";
+	tto:country "CH";
+	.
+
+tto:AddressClaire
+	rdf:type dbo:Address;
+	tto:houseNumber "32";
+	tto:street "Shenandoah Shores Road";
+	tto:zipCode "22630";
+	tto:city "Front Royal";
+	tto:country "USA";
+	.
+
+tto:AddressThomas
+	rdf:type dbo:Address;
+	tto:houseNumber "14";
+	tto:street "North Anchorage Street";
+	tto:zipCode "7032";
+	tto:city "Anchorage";
+	tto:country "USA";
+	.
+
+tto:AddressJoseph
+	rdf:type dbo:Address;
+	tto:houseNumber "22";
+	tto:street "North West Street";
+	tto:zipCode "4056";
+	tto:city "Seattle";
+	tto:country "USA";
+	.
+
+tto:AddressJames
+	rdf:type dbo:Address;
+	tto:houseNumber "13";
+	tto:street "Shenandoah Shores Road";
+	tto:zipCode "22630";
+	tto:city "Front Royal";
+	tto:country "USA";
+	.
+
+tto:AddressHome
+	rdf:type dbo:Address;
+	tto:houseNumber "8000";
+	tto:street "Squires Lane";
+	tto:zipCode "20187";
+	tto:city "Manassas";
+	tto:country "USA";
+	.
+	
+tto:AddressABB
+	rdf:type dbo:Address;
+	tto:houseNumber "1";
+	tto:street "Segelhofstrasse";
+	tto:zipCode "5405";
+	tto:city "Baden";
+	tto:country "CH";
+	.
+tto:AddressSBB
+	rdf:type dbo:Address;
+	tto:houseNumber "23"; 
+	tto:street "Limatstrasse";
+	tto:zipCode "8021";
+	tto:city "Zürich";
+	tto:country "CH";
+	.
+
+tto:AddressNestle
+	rdf:type dbo:Address;
+	tto:houseNumber "55"; 
+	tto:street "avenue Nestlé";
+	tto:zipCode "1800";
+	tto:city "Vevey";
+	tto:country "CH";
+	.
+
+tto:AddressZHAW
+	rdf:type dbo:Address;
+	tto:houseNumber "2";
+	tto:street "Oberekirchgasse";
+	tto:zipCode "8401";
+	tto:city "Winterthur";
+	tto:country "CH";
+	.
+	
+tto:PhoneNumberKate
+	rdf:type dbo:Phone;
+	tto:countryCode "0041";
+	tto:phoneNumber "0762233222";
+	.
+
+tto:PhoneNumberClaire
+	rdf:type dbo:Phone;
+	tto:countryCode "001";
+	tto:phoneNumber "5403440888";
+	.
+
+tto:PhoneNumberThomas
+	rdf:type dbo:Phone;
+	tto:countryCode "001";
+	tto:phoneNumber "7033448818";
+	.
+
+tto:PhoneNumberJoseph
+	rdf:type dbo:Phone;
+	tto:countryCode "001";
+	tto:phoneNumber "6023448812";
+	.
+
+tto:PhoneNumberJames
+	rdf:type dbo:Phone;
+	tto:countryCode "001";
+	tto:phoneNumber "5405087891";
+	.
+
+tto:PhoneNumberHome
+	rdf:type dbo:Phone;
+	tto:countryCode "001";
+	tto:phoneNumber "5403448818";
+	.
+	
+tto:PhoneNumberABB
+	rdf:type dbo:Phone;
+	tto:countryCode "0041";
+	tto:phoneNumber "0844845845"
+	.
+
+tto:PhoneNumberNestle
+	rdf:type dbo:Phone;
+	tto:countryCode "0041";
+	tto:phoneNumer "0417852020"
+	.
+
+tto:PhoneNumberSBB
+	rdf:type dbo:Phone;
+	tto:countryCode "0041";
+	tto:phoneNumber "0848446688";	
+	.
+
+tto:PhoneNumberZHAW
+	rdf:type dbo:Phone;
+	tto:countryCode "0041";
+	tto:phoneNumber "0848446681"
+	.
+	

@@ -1,0 +1,159 @@
+
+/* =Inline Form
+----------------------------------------------------------- */
+.inline-form {
+	display: inline;
+}
+.inline-form button {
+	margin: 0;
+	padding: 0;
+	line-height: 10px;
+	border: 1px solid #aaa;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+
+/* =SQL Execution
+----------------------------------------------------------- */
+.sql-result-div {
+}
+.sql-result-div .waiting {
+	border: 1px solid #cccccc;
+	padding: 7px;
+	background-color: #aaffaa;
+}
+.sql-result-div .error {
+	border: 1px solid #cccccc;
+	padding: 7px;
+	margin: 0;
+	background-color: #ffaaaa;
+}
+
+/* =Query Graphs
+----------------------------------------------------------- */
+div.querygraphs {
+	font-size: 11px;
+}
+
+div.querygraphs-ids {
+	border: 1px solid #cccccc;
+	padding: 7px;
+	float: left;
+	margin-right: 7px;
+	margin-bottom: 7px;
+}
+
+div.querygraphs-scores {
+	border: 1px solid #cccccc;
+	padding: 7px;
+	float: left;
+	margin-right: 7px;
+	margin-bottom: 7px;
+}
+
+div.querygraphs-bos {
+	border: 1px solid #cccccc;
+	padding: 7px;
+	float: left;
+	margin-right: 7px;
+	margin-bottom: 7px;
+}
+
+div.querygraphs-ntriples {
+	border: 1px solid #cccccc;
+	padding: 7px;
+	float: left;
+	margin-right: 7px;
+	margin-bottom: 7px;
+}
+
+div.querygraphs-dags {
+	border: 1px solid #cccccc;
+	padding: 7px;
+	float: left;
+	margin-right: 7px;
+	margin-bottom: 7px;
+}
+
+div.clearer {
+	clear: both;
+}
+
+
+/* =Inputs Outputs Table
+-------------------------------------------------------------- */
+
+table.inputsoutputs {
+	border: 0;
+	width: 100%;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+}
+table.inputsoutputs td {
+	width: 33%;
+	border: none;
+}
+table.inputsoutputs td.center {
+	border: 14px solid #aaa;
+}
+table.inputsoutputs td.input,
+table.inputsoutputs td.output {
+	background-color: #ddd;
+}
+table.inputsoutputs td.input {
+	border-top-left-radius: 21px;
+	border-bottom-left-radius: 21px;
+	-moz-border-radius-topleft: 21px;
+	-moz-border-radius-bottomleft: 21px;
+}
+table.inputsoutputs td.output {
+	border-top-right-radius: 21px;
+	border-bottom-right-radius: 21px;
+	-moz-border-radius-topright: 21px;
+	-moz-border-radius-bottomright: 21px;
+}
+table.inputsoutputs ul {
+	padding: 0;
+	margin: 0;
+}
+table.inputsoutputs li {
+	background-color: white;
+	margin: 7px;
+	padding: 1px;
+	list-style: none;
+}
+table.inputsoutputs h3 {
+	margin: 0;
+	padding: 0;
+}
+table.inputsoutputs .edge {
+	color: green;
+}
+table.inputsoutputs .edge-input {
+	float: right;
+}
+table.inputsoutputs .edge-output {
+	float: left;
+	margin-right: 7px;
+}
+table.inputsoutputs .is-type {
+	background-color: #ffff99;
+}
+
+/* =Problems
+-------------------------------------------------------------- */
+
+.problems ul {
+}
+
+/* =Admin
+-------------------------------------------------------------- */
+.config td {
+	padding: 3px;
+}
+.config tr.header {
+	background-color: #eee;
+}
+.config td.stored {
+	color: #aaa;
+}
