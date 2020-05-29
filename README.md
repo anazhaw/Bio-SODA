@@ -41,6 +41,7 @@ Possible examples:
 * What is the city where James lives?
 * Show companies and locations.
 * Who works for Nestle?
+* Show companies and locations including cities.
 * Who works for a company located in Baden?
 * Show all persons who live in the USA. 
 
