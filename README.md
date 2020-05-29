@@ -1,4 +1,4 @@
-# Bio-SODA - A Question Answering System for Domain Knowledge Graphs
+# Bio-SODA - Question Answering for Domain Knowledge Graphs
 
 Welcome to the Bio-SODA code repository! 
 
