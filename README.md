@@ -47,6 +47,7 @@ Finally, in order to compute the index over the RDF data, select the "Reload Ind
 
 Click on "Go" and wait for the index to be computed! For the sample database provided with Bio-SODA, this should not take longer than 1 or 2 minutes. 
 
+### Summary Graph Generation
 In parallel, in the Data Directory, the Summary Graph of the RDF data will be generated, in the `summarygraph.txt` file. This is only done once and afterwards the graph file will be re-used by the system. If the schema of your data changes, delete this file (which will trigger its recomputation).
 
 ### Question Answering
