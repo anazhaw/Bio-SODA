@@ -41,6 +41,7 @@ Possible examples:
 * What is the city where James lives?
 * Show companies and locations.
 * Who works for Nestle?
+* Who works for a company located in Baden?
 * Show all persons who live in the USA. 
 
 Note that more advanced example on 3 real-world datasets tested with Bio-SODA are available at the demo page [here](http://biosoda.expasy.org/welcome/). A detailed analysis of results across multiple systems tested with the 3 datasets, part of our VLDB submission, is available in the [Evaluation](https://github.com/anazhaw/Bio-SODA/tree/master/Evaluation) folder.
