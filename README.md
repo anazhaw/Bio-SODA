@@ -4,11 +4,13 @@ Welcome to the Bio-SODA code repository!
 
 Bio-SODA is a question answering system over domain knowledge graphs, such as scientific datasets, where training data (in the form of questions and corresponding SPARQL queries) is rare or unavailable.
 
-This repository is a self-contained resource allowing you to setup your own installation of Bio-SODA and test it on a sample knowledge graph that describes Persons and Companies they work for.
+This repository is a self-contained resource allowing you to setup your own installation of Bio-SODA and test it on a sample knowledge graph that describes Persons and Companies they work for. 
 
 To start with, install MySQL locally and create a new database, for example, `sample_index`. The MySQL user for this database should have sufficient rights to create new tables, because the inverted index will be stored in 2 newly created tables at runtime.
 
 Next, install Java if needed and make sure to set JAVAHOME in the [set-vars.sh](https://github.com/anazhaw/bio-soda/blob/master/set-vars.sh#L9) script and in the [config.sh](https://github.com/anazhaw/bio-soda/blob/master/scripts/config.sh#L9) script.
+
+Bio-SODA uses the Stanford coreNLP tools. For this purpose the models library needs to be downloaded from the official website [here](http://nlp.stanford.edu/software/stanford-english-corenlp-2016-10-31-models.jar) and added to the [lib/](https://github.com/anazhaw/bio-soda/blob/master/lib/) folder.
 
 Currently, we assume that queries are executed against a real SPARQL endpoint. For this purpose, in order to test Bio-SODA with the sample data, you can either use the link already provided in the Constants file [here](https://github.com/anazhaw/bio-soda/blob/master/src/ch/ethz/semdwhsearch/prototyp1/constants/Constants.java#L84), or setup your own repository, for example in Virtuoso or GraphDB, where the data can be queried - you will need to simply upload the two RDF files from the [sample_data](https://github.com/anazhaw/bio-soda/blob/master/sample_data) folder there. 
 
