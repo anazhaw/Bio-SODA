@@ -765,10 +765,14 @@ public class SPARQLUtilsRemote {
 	}
 
 	public static String getTypeOfResource(String endpoint, String resourceURI){
+		if(resourceURI == null)
+			return null;
 		if(!resourceURI.startsWith("<"))
 			resourceURI = "<" + resourceURI +">";
 
 		HashSet<String> results = getClassesOfResource(endpoint, resourceURI);
+		if(results == null)
+			return null;
 		results.remove("<http://www.w3.org/2002/07/owl#NamedIndividual>");
 		if(results.size() == 0)
 			return null;

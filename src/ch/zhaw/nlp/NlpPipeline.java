@@ -81,7 +81,7 @@ public class NlpPipeline {
             for (CoreLabel token : sentence.get(CoreAnnotations.TokensAnnotation.class)) {
 			// we need special handling of percentage sign since Stanford NLP tokeniser creates a separate token for this, so things like 50% will appear disconnected
 			// here we concatenate them back
-			if(token.originalText().equals("%")) {
+			if(token.originalText().equals("%") && tokenList.size() > 0) {
             			Token lastToken = tokenList.getToken(tokenList.size() - 1);
             			lastToken.setText(lastToken.getText() + "%");
             			continue;

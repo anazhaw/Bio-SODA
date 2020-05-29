@@ -24,5 +24,8 @@ hs_err_pid*
 #class folder
 bin/
 
+#class path
+src/.classpath
+
 #summary graph file
 sample_data/summarygraph.txt
