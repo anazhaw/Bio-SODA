@@ -26,7 +26,7 @@ Currently, we assume that queries are executed against a real SPARQL endpoint. F
 ### Node centrality
 Moreover, if you want node centrality to be included in ranking for your own data, you will need to setup a SPARQL endpoint where the RDF PageRank scores are uploaded. We currently provide a link for the sample data model PageRank scores, but in order to use your own dataset, you will need to create a new SPARQL endpoint or upload the PageRank scores to the one containing your data and change the URL provided in the constants file [here](https://github.com/anazhaw/bio-soda/blob/master/src/ch/ethz/semdwhsearch/prototyp1/constants/Constants.java#L85). One of the options for computing new PageRank scores is using the [PageRankRDF](https://github.com/QAnswer/PageRankRDF) tool.
 
-### Compile & Run
+## Compile & Run
 Compile the source code using the command `./compile.sh` in the root folder of the project. For now, we mainly support install on Linux and Mac.
 
 Next, you can start running Bio-SODA locally by running `./run-standalone.sh` from the root folder of the project. The prototype will be available at the page [http:localhost:8081/biosoda/](http:localhost:8081/biosoda/).
@@ -50,7 +50,7 @@ Click on "Go" and wait for the index to be computed! For the sample database pro
 ### Summary Graph Generation
 In parallel, in the Data Directory, the Summary Graph of the RDF data will be generated, in the `summarygraph.txt` file. This is only done once and afterwards the graph file will be re-used by the system. If the schema of your data changes, delete this file (which will trigger its recomputation, regardless of whether the index is reloaded or not).
 
-### Question Answering
+## Question Answering
 
 Congratulations! You should now see the welcome screen where you can input a few test questions.
 
