@@ -1,6 +1,6 @@
-# Bio-SODA - Question Answering for Domain Knowledge Graphs
+# Bio-SODA - Question Answering for Domain Knowledge Graphs (development branch)
 
-Welcome to the Bio-SODA code repository! 
+Welcome to the Bio-SODA code repository! NOTE: this is the unstable, development branch. For the stable prototype, see master branch.
 
 Bio-SODA is a question answering system over domain knowledge graphs, such as scientific datasets, where training data (in the form of questions and corresponding SPARQL queries) is rare or unavailable.
 
