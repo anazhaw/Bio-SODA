@@ -78,6 +78,7 @@ public class Config {
 		mapAll.put(ConfigPropertyNames.ALGO_LOOKUP_PREFIX_MATCHING, String.valueOf(isAlgoLookupPrefixMatching(true)));
 		mapAll.put(ConfigPropertyNames.ALGO_SPARQL_SUBSTRING_MATCHING, String.valueOf(isAlgoSparqlSubstringMatching(true)));
 		mapAll.put(ConfigPropertyNames.ALGO_SPARQL_PREFIX_MATCHING, String.valueOf(isAlgoSparqlPrefixMatching(false)));
+		mapAll.put(ConfigPropertyNames.ALGO_LOOKUP_EXCLUDE, String.valueOf(getLookupExclusionList("")));
 
 		// filter by prefix
 		if (prefix == null) {
@@ -91,6 +92,17 @@ public class Config {
 			}
 			return mapFiltered;
 		}
+	}
+
+	public boolean isExcludedFromLookup(String uri) {
+		String exclusionList = getString(ConfigPropertyNames.ALGO_LOOKUP_EXCLUDE, "");
+		if(exclusionList.isEmpty())
+			return false;
+		for(String excluded : exclusionList.split(",")){
+			if(uri.contains(excluded))
+				return true;
+		}
+		return false;
 	}
 
 	public String getProperty(String key) {
@@ -216,6 +228,10 @@ public class Config {
 
 	public boolean isAlgoSparqlPrefixMatching(boolean defaultValue) {
 		return getBoolean(ConfigPropertyNames.ALGO_SPARQL_PREFIX_MATCHING, defaultValue);
+	}
+
+	public String getLookupExclusionList(String defaultValue) {
+		return getString(ConfigPropertyNames.ALGO_LOOKUP_EXCLUDE, defaultValue);
 	}
 
 	// ---------------------------------------------------------------- results

@@ -24,4 +24,5 @@ public abstract class ConfigPropertyNames {
 
 	public static final String ALGO_SPARQL_PREFIX_MATCHING = "algo.sparql.prefixMatching";
 
+	public static final String ALGO_LOOKUP_EXCLUDE = "algo.lookup.exclude";
 }

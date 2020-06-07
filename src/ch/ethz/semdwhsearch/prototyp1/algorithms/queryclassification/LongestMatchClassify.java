@@ -69,7 +69,7 @@ public class LongestMatchClassify {
 			HashSet<Term> toRemoveMatches = new HashSet<Term>();
 
 			for(Term term: match.getTerms()) {
-				if((term.filteredClass == null || term.filteredClass.equals("null")) ) {
+				if((term.filteredClass == null || term.filteredClass.equals("null")) && (!config.isExcludedFromLookup(term.originName)) ) {
 					String className = SPARQLUtilsRemote.getTypeOfResource(Constants.REMOTE_REPO, term.originName);
 					if(className != null) {
 						term.filteredClass = className;
@@ -78,7 +78,7 @@ public class LongestMatchClassify {
 					}
 				}
 
-				if(term.pageRank <= Constants.DEFAULT_PAGERANK){ //TODO: add FIX FOR PROPERTIES
+				if(term.pageRank <= Constants.DEFAULT_PAGERANK || config.isExcludedFromLookup(term.originName)){ //TODO: add FIX FOR PROPERTIES
 					toRemoveMatches.add(term);
 					continue;
 				}
