@@ -4,87 +4,10 @@
 #
 
 # comma separated list of property names for a caption of a node
-# hint: try to make sure, that only one caption per node matches
 general.propnames.caption = 
 #Name,label,geneName,scientificName,commonName,hasOMAId,uri,type,speciesName,stageName,identifier,indication,state,generalFunction,brandName,predictedWaterSolubility,generalFunction,state,brandName,proteinBinding,foodInteraction,drugName,mechanismOfAction,synonym,genericName,sideEffectName
 #QALD4: is it needed? the synonym property
 #add back: description, comment, altLabel
 
-###############################################################################
-# base data
-#
-
-basedata.basePath = http://geodata.ch/basedata/
-basedata.baseUrl = http://geodata.ch/basedata-graph#
-
-###############################################################################
-# schema
-#
-
-schema.basePath = http://geodata.ch/schema/
-schema.baseUrl = http://geodata.ch/database-schema#
-
-schema.propname.physicalTableName   = Physical_Table_Name
-schema.propname.physicalColumnName  = Physical_Column_Name
-schema.propname.logicalAttr         = Logical_Attribute
-schema.propname.foreignKey          = Foreign_Key
-
-# join types and attributes (if your schema does not have join relationship nodes, simply leave these mappings blank)
-#schema.type.joinNode                = 
-#schema.type.joinAttr                = 
-#schema.propname.joinAttr1           = 
-#schema.propname.joinAttr2           = 
-
-schema.propname.keyAttr             = Is_Key
-
-schema.type.inheritanceNode         = http://geodata.ch/database-schema#Inheritance
-schema.propname.inheritanceChild    = hasChild
-schema.propname.inheritanceParent   = hasParent
-
-###############################################################################
-# schema description
-#
-
-schemaDesc.baseUrl = http://geodata.ch/database-schema-description#
-
-schemaDesc.propname.isLogicalEntity  = Is_Logical_Entity
-schemaDesc.propname.isLogicalAttr    = Is_Logical_Attribute
-schemaDesc.uri.logicalEntity         = http://geodata.ch/database-schema-description/logical_entity
-schemaDesc.uri.logicalAttr           = http://geodata.ch/database-schema-description/logical_attribute
-
-###############################################################################
-# domain ontologies
-#
-
-dos.basePath = http://www.mooney.net/geo
-dos.baseUrl = http://www.mooney.net/geo#
-
-# this is used in the classification to decide which parameters to index from the DOs.
-# this is also used to create filters when walking the metadata graph.
-#dos.propname.value = Value
-#dos.propname.type = Type
-
-###############################################################################
-# DBPedia
-#
-
-dbPedia.resource.basePath  = http://dbpedia.org/resource/
-dbPedia.property.wikilink  = http://dbpedia.org/property/wikilink
-dbPedia.propname.wikilink  = Wikilink
-
-
-#
-# naming scheme:
-# - URL: a proper URL
-# - Base URL: a proper URL plus a "#"
-# - Base path: a beginning of a URL used to build a proper URL.
-# - Name: a simple name without URL components or path components.
-#
-
-###############################################################################
-# MSCMike UserFeedback
-#
-
-userfeedback.newNode.basePath = http://userfeedback/newNode/
 
 
