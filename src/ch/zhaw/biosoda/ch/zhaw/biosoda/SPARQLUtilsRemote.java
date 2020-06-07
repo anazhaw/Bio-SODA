@@ -528,6 +528,26 @@ public class SPARQLUtilsRemote {
 		return results;
 	}
 
+	public static HashSet<String> getDomainOfPropertyFromSummaryGraph(String prop, FederatedSummaryGraph g){
+		HashSet<String> domains = new HashSet<String>();
+		for(SummaryEdge edge: g.getSummaryGraph().edgeSet()) {
+			if(edge.toString().contains(prop)) {
+				domains.add(edge.getSrc());
+			}
+		}
+		return domains;
+	}
+
+	public static HashSet<String> getRangeOfPropertyFromSummaryGraph(String prop, FederatedSummaryGraph g){
+		HashSet<String> ranges = new HashSet<String>();
+		for(SummaryEdge edge: g.getSummaryGraph().edgeSet()) {
+			if(edge.toString().contains(prop)) {
+				ranges.add(edge.getDest());
+			}
+		}
+		return ranges;
+	}
+
 	public static HashSet<String> getDomainOfPropertyRemote(String prop, String endpoint){
 		HashSet<String> results = new HashSet<String>();
 		String queryString = "SELECT DISTINCT ?dom where {{?x a ?dom. ?x " + prop + "?y .}  UNION { " + prop + " rdfs:domain ?dom}}";
@@ -559,7 +579,7 @@ public class SPARQLUtilsRemote {
 
 	public static HashSet<String> getRangeOfPropertyRemote(String prop, String endpoint){
 		HashSet<String> results = new HashSet<String>();
-		String queryString = "SELECT DISTINCT ?range where {?x a ?range. ?y " + prop + "?x .}";
+		String queryString = "SELECT DISTINCT ?range where {?x a ?range. ?y " + prop + "?x .} UNION { " + prop + " rdfs:range ?range}}";
 		queryString = prolog1 + "\n" + prolog2 + "\n"+ prolog3 + "\n" + prolog4 + "\n" + queryString;
 		final Query query = QueryFactory.create(queryString);
 		QueryExecution qexec = QueryExecutionFactory.sparqlService(endpoint, query);
