@@ -46,6 +46,7 @@ import com.hp.hpl.jena.sparql.lib.org.json.JSONObject;
 import ch.ethz.rdf.dag.RdfDagNode;
 import ch.ethz.semdwhsearch.prototyp1.constants.Constants;
 import ch.ethz.semdwhsearch.prototyp1.metadata.MetadataSingleton;
+import org.apache.commons.lang3.tuple.Pair;
 
 public class SPARQLUtilsRemote {
 	final static String prolog1 = "PREFIX rdfs: <" + RDFS.getURI() + ">";
@@ -432,7 +433,7 @@ public class SPARQLUtilsRemote {
 		return results;
 	}
 
-	public static List<String> execRemoteQueryGeneric(String queryString, String endpoint){
+	public static ArrayList<String> execRemoteQueryGeneric(String queryString, String endpoint){
 		ArrayList<String> results = new ArrayList<String>();
 		queryString = prolog1 + "\n" + prolog2 + "\n"+ prolog3 + "\n" + prolog4 + "\n" + queryString;
 		final Query query = QueryFactory.create(queryString);
@@ -1516,6 +1517,51 @@ public class SPARQLUtilsRemote {
 		// Create a single execution of this query, apply to a model
 		// which is wrapped up as a Dataset
 		return qexec.execAsk();
+	}
+
+	public static HashSet<Pair<String, String>> execQueryWithOffsetandLimit(String subject, String propertyURI, String object, int offset,
+			int limit, String endpoint) {
+		
+		HashSet<Pair<String, String>> results = new HashSet<Pair<String, String>>();
+		
+		String querySPARQL = "select distinct ?subj ?obj where { ?subj "+ propertyURI + " ?obj . } OFFSET "+ offset + " LIMIT "+ limit;
+		
+		final String queryString = prolog1 + "\n" + prolog2 + "\n"+ prolog3 + "\n"+ prolog4 + "\n" + querySPARQL;
+
+		final Query query = QueryFactory.create(queryString);
+		QueryExecution qexec = QueryExecutionFactory.sparqlService(endpoint, query);
+
+		query.serialize(new IndentedWriter(System.out, true));
+		
+		// Create a single execution of this query, apply to a model
+		// which is wrapped up as a Dataset
+
+		try {
+			// Assumption: it’s a SELECT query.
+			final ResultSet rs = qexec.execSelect();
+			QuerySolution rb = null;
+			if(rs.hasNext()) {
+				rb = rs.nextSolution();
+				// The order of results is undefined.
+				while(true) {
+					//logger.info("SOL "+ rb.toString());
+					if(rb.get("subj") != null && rb.get("obj") != null) {		
+						Pair<String, String> subj_obj = Pair.of(rb.get("subj").toString(), rb.getLiteral("obj").toString());
+						results.add(subj_obj);
+					}
+
+					if(!rs.hasNext())
+						break;
+					rb = rs.nextSolution();
+				}
+			}
+		} finally {
+			qexec.close();
+		}
+
+		logger.info("\n\n##################################\n\n");
+		
+		return results;
 	}
 
 }

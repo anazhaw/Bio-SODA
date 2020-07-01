@@ -76,6 +76,8 @@ public class Constants {
 	public static final String FN_AUTO_INIT = "";
 	public static final String FN_METADATA_MAPPING = "metadata-mapping.txt";
 	public static final boolean ONDISK_MODEL = false;
+	public static final boolean REMOTE_INDEXING = true;
+	public static final int SPARQL_INDEXING_BATCH_SIZE = 1000;
 	public static final String TBD_DATA_DIR = "";
 
 	public static final String MODEL_NAME = "sample";

@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.lang3.tuple.Pair;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.RDFNode;
@@ -35,7 +37,7 @@ import ch.zhaw.biosoda.SummaryRDFGraph;
 /**
  * Information about a model.
  * 
- * @author Lukas Blunschi
+ * @author Lukas Blunschi, Ana Sima
  * 
  */
 public class ModelInfo {
@@ -79,7 +81,7 @@ public class ModelInfo {
 	//todo: fix this
 	private FederatedSummaryGraph federatedSummaryGraph;
 
-	public ModelInfo(Model model, String modelName, int type, MetadataMapping mapping, boolean reloadIndex) {
+	public ModelInfo(Model model, String modelName, int type, MetadataMapping mapping, boolean reloadIndex, boolean isRemote) {
 
 		// init members
 		this.modelName = modelName;
@@ -91,8 +93,14 @@ public class ModelInfo {
 		this.literalMap = new HashMap<String, Set<String>>();
 		this.model = model;
 
-		// parse model
-		parseModel(model, mapping);
+		if(!isRemote) {
+			// parse model from disk
+			parseModel(model, mapping);		
+		} else {
+			// parse from remote sparql endpoint
+			String endpoint = Constants.REMOTE_REPO;
+			parseModelFromRemote(endpoint, mapping);
+		}
 
 		// logging info output
 		int nU = uris.size();
@@ -197,7 +205,7 @@ public class ModelInfo {
 	// ------------------------------------------------------------- operations
 
 	/**
-	 * Parse the given model.
+	 * Parse the given model from a local (in-memory) model object.
 	 * <p>
 	 * This method loop over all statements in the given model and extracts text
 	 * values (captions, parameters), edges and uris.
@@ -511,6 +519,134 @@ public class ModelInfo {
 		logger.info("Added paramMap");
 		// report time
 		watch.stopAndReport("Adding model to DAG");
+	}
+	
+	/**
+	 * Parse the given model from a remote SPARQL object.
+	 * <p>
+	 * This method loops over all *** datatype properties *** in the endpoint and extracts text
+	 * values (captions, parameters), edges and uris.
+	 * NOTE: if captions list specified, will only request those properties
+	 */
+	private void parseModelFromRemote(String endpoint, MetadataMapping mapping) {
+		// 1. get all properties with literals in the endpoint
+		String query = "select distinct ?prop where { ?x ?prop ?y . filter(isLiteral(?y)) } "; 
+		
+		ArrayList<String> propertiesToIndex = (ArrayList<String>) SPARQLUtilsRemote.execRemoteQuery(query, endpoint);
+		
+		System.out.println("Will index: "+ propertiesToIndex);
+		
+		// 2. iterate through all and associate literal with subject as done above
+
+		// property names caption configured by user
+		Set<String> pnsCaptionSet = mapping.getGeneralPropNamesCaptionSet();
+		
+		for(String propertyURI : propertiesToIndex) {
+			
+			// get only the fragment name, e.g. "label", "identifier", "name" etc - to be compliant with how these are configured in the metadata file
+			String propName = SPARQLUtilsRemote.getLiteralFromString(propertyURI);
+			
+			//index literals as indicated by the mapping properties, e.g. label (or everything if the set is empty)
+			if (pnsCaptionSet.size() == 0 || pnsCaptionSet.contains(propName.toLowerCase())) {
+				// paginate! LIMIT + OFFSET
+				int current_batch = 0;
+				
+				while (true) { // break when no new results available
+					int offset = current_batch * Constants.SPARQL_INDEXING_BATCH_SIZE;
+					int limit = Constants.SPARQL_INDEXING_BATCH_SIZE;
+					
+					HashSet<Pair<String, String>> results = SPARQLUtilsRemote.execQueryWithOffsetandLimit(null, propertyURI, null, offset, limit, endpoint);
+					//if still has results, get results (subj, obj) and index them, else break
+					if(results.size() == 0) {
+						break;
+					}
+					
+					current_batch += 1;
+					for(Pair<String, String> subj_obj_pair : results) {
+						
+						String literal = subj_obj_pair.getRight();
+						String subjectUri = subj_obj_pair.getLeft();
+						
+						//don't index numbers
+						if(literal.matches("-?\\d+(\\.\\d+)?"))
+							continue;
+						
+				
+						//here also get CLASS of subject
+						String className = SPARQLUtilsRemote.getTypeOfResource(Constants.REMOTE_REPO, subjectUri);
+			
+						// caption
+						String captionMapKey = subjectUri + "###" + className + "###" + propertyURI;
+			
+						
+						StringBuffer buf = captionMap.get(captionMapKey);
+			
+						if (buf == null) {
+							buf = new StringBuffer();
+							captionMap.put(captionMapKey, buf);
+						} else {
+							//logger.warn("two captions found on node " + subjectUri);
+						}
+						if (buf.length() > 0) {
+							buf.append(" ");
+						}
+						
+						String[] splits = literal.split(Constants.PUNCTUATION_FOR_SPLITS);
+			
+						for(String word : splits) {		
+							if(!buf.toString().contains(word)) {
+								buf.append(word);
+								buf.append(" ");
+							}
+						}
+			
+						if(!buf.toString().contains(literal)){
+							buf.append(literal);
+							buf.append(" ");
+						}
+			
+						captionMap.put(captionMapKey, buf);
+				
+					}
+				}
+			}
+		}
+		
+		//iterate through all keys in the captionMap, camel case split and add as indexed
+		if(Constants.indexURIFragments) {
+			for(Map.Entry<String, StringBuffer> entry : captionMap.entrySet()) {
+				String uriString = entry.getKey().split("###")[0];
+
+				StringBuffer buf = captionMap.get(entry.getKey());
+				if (buf == null) {
+					buf = new StringBuffer();
+					captionMap.put(entry.getKey(), buf);
+				}
+				String localName = SPARQLUtilsRemote.getLiteralFromString(uriString);
+				//TODO: if only numbers, DON't INDEX
+				if(localName == null)
+					continue;
+				String[] splits = localName.split(Constants.PUNCTUATION_FOR_SPLITS);
+
+				for(String word : splits) {	
+					//also split camelCase
+					String[] camelCaseSplit = word.split("(?<!(^|[A-Z]))(?=[A-Z])|(?<!^)(?=[A-Z][a-z])");
+					for(String camelCaseSplittedWord : camelCaseSplit){	
+						if(!buf.toString().contains(camelCaseSplittedWord)) {
+							buf.append(camelCaseSplittedWord);
+							buf.append(" ");
+						}
+					}
+				}
+
+				if(!buf.toString().contains(localName)) {
+					buf.append(" ");
+					buf.append(localName);
+				}
+			}
+		}
+
+		//TODO: should we still do a final pass through uris that do not have anything indexed (in caption map) yet??
 	}
 
 }

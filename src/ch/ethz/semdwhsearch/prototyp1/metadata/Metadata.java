@@ -191,6 +191,10 @@ public class Metadata {
 				Dataset ds = TDBFactory.createDataset(Constants.TBD_DATA_DIR);
 				allModels = ds.getDefaultModel();
 			}
+			else if(Constants.REMOTE_INDEXING) {
+				// do nothing, model will be added from remote below
+				;
+			}
 			else{
 				modelsDos = EModels.getFromDir(new File(getDataDirPath()));
 				logger.info("GOT FROM DIR MODELS "+ modelsDos.size());
@@ -204,7 +208,7 @@ public class Metadata {
 				}
 			}
 		}
-		ModelInfo infoSparql = new ModelInfo(allModels, Constants.MODEL_NAME, TYPE_DO, mapping, false);
+		ModelInfo infoSparql = new ModelInfo(allModels, Constants.MODEL_NAME, TYPE_DO, mapping, false, Constants.REMOTE_INDEXING);
 		doInfos.add(infoSparql);
 
 		logger.info("RDF dataset added.");
