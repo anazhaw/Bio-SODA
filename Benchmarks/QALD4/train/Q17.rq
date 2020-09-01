@@ -1,0 +1,6 @@
+# Which are possible drugs against rickets?
+
+SELECT DISTINCT ?x 
+WHERE {
+        <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseases/1004> <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/possibleDrug> ?x.
+}

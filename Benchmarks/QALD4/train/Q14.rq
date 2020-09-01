@@ -1,0 +1,7 @@
+# Give me drug references of drugs targeting Prothrombin.
+
+SELECT DISTINCT ?v0
+WHERE { 
+        <http://www4.wiwiss.fu-berlin.de/drugbank/resource/targets/3579> <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/drugReference> ?v0. 
+        ?v1 <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/target> <http://www4.wiwiss.fu-berlin.de/drugbank/resource/targets/3579>. 
+}

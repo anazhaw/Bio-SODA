@@ -1,0 +1,3 @@
+# Which drugs have a water solubility of 2.78e-01 mg/mL?
+
+SELECT DISTINCT ?x WHERE {?x <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/predictedWaterSolubility> 2.78e-01 mg/mL.}

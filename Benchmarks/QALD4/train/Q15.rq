@@ -1,0 +1,8 @@
+# Which genes are associated with diseases treated with Cetuximab?
+
+SELECT DISTINCT ?v1 
+WHERE { 
+        ?v0 a <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/diseases>. 
+        ?v0 <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/associatedGene> ?v1. 
+        ?v0 <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/possibleDrug> <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/DB00002>. 
+}

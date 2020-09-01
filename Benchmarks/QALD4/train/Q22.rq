@@ -1,0 +1,7 @@
+# Which are possible drugs for diseases associated with the gene ALD?
+
+SELECT DISTINCT ?x 
+WHERE {
+        ?s <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/associatedGene> <http://www4.wiwiss.fu-berlin.de/diseasome/resource/genes/ALD>. 
+        ?s <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/possibleDrug> ?x.
+}

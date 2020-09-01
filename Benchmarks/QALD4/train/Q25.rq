@@ -1,0 +1,8 @@
+# Which genes are associated with diseases whose possible drugs target Cubilin?
+
+SELECT DISTINCT ?z 
+WHERE {
+        ?s <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/associatedGene> ?z. 
+        ?s <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/possibleDrug> ?x. 
+        ?x <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/target> <http://www4.wiwiss.fu-berlin.de/drugbank/resource/targets/1224>.
+}

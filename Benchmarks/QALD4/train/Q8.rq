@@ -1,0 +1,6 @@
+# Which drugs interact with allopurinol?
+
+SELECT DISTINCT ?x 
+WHERE { 
+        ?x <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/interactionDrug1> <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/DB00437>. 
+}

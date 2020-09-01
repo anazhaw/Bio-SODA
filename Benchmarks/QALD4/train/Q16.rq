@@ -1,0 +1,7 @@
+# Which drugs have hypertension and vomiting as side-effects?
+
+SELECT DISTINCT ?s 
+WHERE { 
+        ?s <http://www4.wiwiss.fu-berlin.de/sider/resource/sider/sideEffect> <http://www4.wiwiss.fu-berlin.de/sider/resource/side_effects/C0020538>. 
+        ?s <http://www4.wiwiss.fu-berlin.de/sider/resource/sider/sideEffect> <http://www4.wiwiss.fu-berlin.de/sider/resource/side_effects/C0042963>.
+}

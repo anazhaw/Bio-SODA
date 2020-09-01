@@ -1,0 +1,3 @@
+# Which diseases are associated with SAR1B?
+
+SELECT DISTINCT ?c WHERE {?c a <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/diseases>. ?c <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/associatedGene> <http://www4.wiwiss.fu-berlin.de/diseasome/resource/genes/SAR1B>. }

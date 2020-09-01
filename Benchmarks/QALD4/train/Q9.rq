@@ -1,0 +1,8 @@
+# What are side effects of drugs used for asthma?
+
+SELECT DISTINCT ?v3 ?v1 
+WHERE { 
+        <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseases/116> <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/possibleDrug> ?v2. 
+        ?v0 <http://www4.wiwiss.fu-berlin.de/sider/resource/sider/sideEffect> ?v1. 
+        ?v2 <http://www.w3.org/2002/07/owl#sameAs> ?v0. 
+}

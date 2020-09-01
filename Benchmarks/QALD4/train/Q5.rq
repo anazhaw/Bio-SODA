@@ -1,0 +1,6 @@
+# Which genes are associated with breast cancer?
+
+SELECT DISTINCT ?x
+WHERE { 
+        <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseases/1669> <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/associatedGene> ?x. 
+}

@@ -1,0 +1,3 @@
+# Give me drugs in the gaseous state.
+
+SELECT DISTINCT ?k WHERE {?k <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/state> Gas }

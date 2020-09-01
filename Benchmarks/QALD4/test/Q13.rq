@@ -1,0 +1,3 @@
+# List illnesses that are treated by drugs whose mechanism of action involves norepinephrine and serotonin.
+
+SELECT DISTINCT ?a WHERE {?a <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/possibleDrug> ?x. ?x <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/mechanismOfAction> ?y. FILTER(contains(str(?y), norepinephrine)) . FILTER(contains(str(?y), serotonin)) }

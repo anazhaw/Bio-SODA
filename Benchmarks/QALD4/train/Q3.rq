@@ -1,0 +1,10 @@
+# What is the side effects of drugs used for Tuberculosis?
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT DISTINCT ?x
+WHERE {
+        <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseases/1154> <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/possibleDrug> ?v2.
+        ?v2 a <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/drugs>.
+        ?v3 <http://www.w3.org/2002/07/owl#sameAs> ?v2.
+        ?v3 <http://www4.wiwiss.fu-berlin.de/sider/resource/sider/sideEffect> ?x.
+}

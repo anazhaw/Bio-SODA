@@ -1,0 +1,6 @@
+# Which are targets of Hydroxocobalamin?
+
+SELECT DISTINCT ?x 
+WHERE {
+        <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/DB00200> <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/target> ?x.
+}

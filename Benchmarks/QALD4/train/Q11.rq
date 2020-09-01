@@ -1,0 +1,9 @@
+# What are enzymes of drugs used for anemia?
+
+SELECT DISTINCT ?v1 
+WHERE { 
+        ?v0 <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/enzyme> ?v1. 
+        ?x <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/possibleDrug> ?v0.
+        ?x rdfs:label ?l.
+        FILTER(REGEX(?l,'Anemia','i')). 
+}

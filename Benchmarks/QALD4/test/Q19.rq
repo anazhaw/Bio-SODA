@@ -1,0 +1,3 @@
+# Which drugs have no side-effects?
+
+SELECT DISTINCT ?z WHERE {{?z a <http://www4.wiwiss.fu-berlin.de/sider/resource/sider/drugs>} MINUS {?z <http://www4.wiwiss.fu-berlin.de/sider/resource/sider/sideEffect> ?y.} }

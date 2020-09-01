@@ -1,0 +1,6 @@
+# Which foods does allopurinol interact with?
+
+SELECT DISTINCT ?l0 
+WHERE { 
+        <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/DB00437> <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/foodInteraction> ?l0. 
+}

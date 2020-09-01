@@ -1,0 +1,3 @@
+# Give me the side-effects drugs with a solubility of 3.24e-02 mg/mL.
+
+SELECT DISTINCT ?k WHERE {?x <http://www.w3.org/2002/07/owl#sameAs> ?y. ?x <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/predictedWaterSolubility> 3.24e-02 mg/mL. ?y <http://www4.wiwiss.fu-berlin.de/sider/resource/sider/sideEffect> ?k}

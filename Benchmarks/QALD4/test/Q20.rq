@@ -1,0 +1,3 @@
+# List diseases whose possible drugs have no side effects.
+
+SELECT DISTINCT ?k WHERE {{?k <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/possibleDrug> ?l. ?l <http://www.w3.org/2002/07/owl#sameAs> ?z. ?z a <http://www4.wiwiss.fu-berlin.de/sider/resource/sider/drugs>} MINUS {?z <http://www4.wiwiss.fu-berlin.de/sider/resource/sider/sideEffect> ?y.} }

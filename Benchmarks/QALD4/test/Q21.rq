@@ -1,0 +1,3 @@
+# Give me the drug categories of Desoxyn.
+
+SELECT DISTINCT ?y WHERE {?k <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/brandName> Desoxyn. ?k <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/drugCategory> ?y }

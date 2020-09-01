@@ -1,0 +1,8 @@
+# Which are targets for possible drugs for diseases associated with the gene ALD?
+
+SELECT DISTINCT ?z
+WHERE {
+        ?s <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/associatedGene> <http://www4.wiwiss.fu-berlin.de/diseasome/resource/genes/ALD>. 
+        ?s <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/possibleDrug> ?x. 
+        ?x <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/target> ?z.
+}

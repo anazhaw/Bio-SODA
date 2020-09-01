@@ -1,0 +1,10 @@
+# What are the side effects of Valdecoxib?
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT DISTINCT ?x
+WHERE {
+        ?v1 rdfs:label ?l.
+        FILTER(REGEX(?l,'Valdecoxib','i')).
+        ?v2 <http://www.w3.org/2002/07/owl#sameAs> ?v1.
+        ?v2 <http://www4.wiwiss.fu-berlin.de/sider/resource/sider/sideEffect> ?x.
+}

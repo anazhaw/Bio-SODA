@@ -1,0 +1,3 @@
+# Which experimental drugs interact with food?
+
+SELECT DISTINCT ?x WHERE {?x a <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/drugs>. ?x <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/drugType> <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugtype/experimental>. ?x <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/foodInteraction> ?k. }

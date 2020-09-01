@@ -1,0 +1,7 @@
+# Which drugs have fever as a side effect?
+
+SELECT DISTINCT ?x 
+WHERE { 
+        ?x a <http://www4.wiwiss.fu-berlin.de/sider/resource/sider/drugs>. 
+        ?x <http://www4.wiwiss.fu-berlin.de/sider/resource/sider/sideEffect> <http://www4.wiwiss.fu-berlin.de/sider/resource/side_effects/C0015967>. 
+}

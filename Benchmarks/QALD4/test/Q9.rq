@@ -1,0 +1,3 @@
+# Which approved drugs interact with fibers?
+
+SELECT DISTINCT ?x WHERE {?x a <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/drugs>. ?x <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/drugType> <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugtype/approved>. ?x <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/foodInteraction> ?k. FILTER (contains(str(?k), fibers)) }

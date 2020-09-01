@@ -1,0 +1,3 @@
+# List the number of distinct side-effects of drugs which target genes whose general function involves cell division.
+
+SELECT COUNT(DISTINCT ?y) WHERE {?x <http://www.w3.org/2002/07/owl#sameAs> ?z. ?z <http://www4.wiwiss.fu-berlin.de/sider/resource/sider/sideEffect> ?y. ?x <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/target> ?a. ?a <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/generalFunction> ?l. FILTER(contains(str(?l), cell division))}

@@ -1,0 +1,6 @@
+# Which diseases are associated with the gene FOXP2?
+
+SELECT DISTINCT ?x
+WHERE {
+        ?x <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/associatedGene> <http://www4.wiwiss.fu-berlin.de/diseasome/resource/genes/FOXP2>.
+}

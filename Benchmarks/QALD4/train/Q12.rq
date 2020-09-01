@@ -1,0 +1,6 @@
+# What is the target drug of Vidarabine?
+
+SELECT DISTINCT ?v0 
+WHERE { 
+        <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/DB00194> <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/target> ?v0. 
+}

@@ -1,0 +1,3 @@
+# List drugs that lead to strokes and arthrosis.
+
+SELECT DISTINCT ?x WHERE {?x <http://www4.wiwiss.fu-berlin.de/sider/resource/sider/sideEffect> ?k. ?k <http://www.w3.org/2002/07/owl#sameAs> <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseases/1098>. ?x <http://www4.wiwiss.fu-berlin.de/sider/resource/sider/sideEffect> <http://www4.wiwiss.fu-berlin.de/sider/resource/side_effects/C0022408>}

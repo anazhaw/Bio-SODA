@@ -1,0 +1,3 @@
+# Which drug has the highest number of side-effects?
+
+SELECT DISTINCT ?x WHERE {?x <http://www4.wiwiss.fu-berlin.de/sider/resource/sider/sideEffect> ?y. } group by ?x order by desc(count(?y)) limit 1

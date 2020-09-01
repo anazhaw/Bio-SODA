@@ -1,0 +1,10 @@
+# Which diseases is Cetuximab used for?
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT DISTINCT ?v
+WHERE {
+        ?x rdfs:label ?l.
+        FILTER(REGEX(?l,'Cetuximab','i')).
+        ?x <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/possibleDiseaseTarget> ?v.
+        ?v a <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/diseases>.
+}

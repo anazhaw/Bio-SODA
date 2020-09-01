@@ -1,0 +1,3 @@
+# Which targets are involved in blood clotting?
+
+SELECT DISTINCT ?a WHERE {?a <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/generalFunction> ?l. FILTER(contains(str(?l), blood clotting))}

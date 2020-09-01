@@ -1,0 +1,7 @@
+# Give me diseases treated by tetracycline
+
+SELECT DISTINCT ?x 
+WHERE { 
+        ?x a <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/diseases>. 
+        ?x <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/possibleDrug> <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/DB00759>. 
+}

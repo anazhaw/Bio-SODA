@@ -1,0 +1,4 @@
+# Which genes are associated with subtypes of rickets?
+
+
+SELECT DISTINCT ?z WHERE {?x <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/diseaseSubtypeOf> <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseases/1004>. ?x <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/associatedGene> ?z. }

@@ -1,0 +1,3 @@
+# Which genes are associated with Endothelin receptor type B?
+
+SELECT DISTINCT ?x WHERE {?x <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/associatedGene> <http://www4.wiwiss.fu-berlin.de/diseasome/resource/genes/EDNRB>}

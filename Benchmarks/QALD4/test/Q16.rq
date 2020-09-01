@@ -1,0 +1,3 @@
+# Give me all diseases of the connective tissue class.
+
+SELECT DISTINCT ?a WHERE {?a <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/class> <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseaseClass/Connective_tissue>. }

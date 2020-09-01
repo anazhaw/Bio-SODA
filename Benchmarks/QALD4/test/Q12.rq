@@ -1,0 +1,3 @@
+# Which drugs achieve a protein binding of 100%?
+
+select distinct ?x where {?x <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/proteinBinding> 100% }

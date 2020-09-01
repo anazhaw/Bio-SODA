@@ -1,0 +1,3 @@
+# Which is the least common chromosome location?
+
+SELECT DISTINCT ?b WHERE {?a <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/chromosomeLocation> ?b } GROUP BY (?b) ORDER BY ASC(COUNT(?a)) LIMIT 1

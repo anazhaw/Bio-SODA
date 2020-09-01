@@ -1,0 +1,7 @@
+# Which are the side effects of Penicillin G?
+
+SELECT DISTINCT ?s 
+WHERE { 
+        ?x owl:sameAs <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/DB01053>. 
+        ?x <http://www4.wiwiss.fu-berlin.de/sider/resource/sider/sideEffect> ?s.
+}

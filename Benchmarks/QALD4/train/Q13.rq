@@ -1,0 +1,7 @@
+# Which drugs target Multidrug resistance protein 1?
+
+SELECT DISTINCT ?v1 
+WHERE { 
+        ?v1 a <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/drugs>. 
+        ?v1 <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/target> <http://www4.wiwiss.fu-berlin.de/drugbank/resource/targets/1588>. 
+}

@@ -1,0 +1,7 @@
+# What are the common side effects of Doxil and Bextra?
+
+SELECT DISTINCT ?y 
+WHERE { 
+        <http://www4.wiwiss.fu-berlin.de/sider/resource/drugs/1690> <http://www4.wiwiss.fu-berlin.de/sider/resource/sider/sideEffect> ?y. 
+        <http://www4.wiwiss.fu-berlin.de/sider/resource/drugs/119607> <http://www4.wiwiss.fu-berlin.de/sider/resource/sider/sideEffect> ?y.
+}

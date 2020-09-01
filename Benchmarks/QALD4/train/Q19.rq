@@ -1,0 +1,8 @@
+# Which are the drugs whose side effects are associated with the gene TRPM6?
+
+SELECT DISTINCT ?x 
+WHERE {
+        ?x <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/associatedGene> <http://www4.wiwiss.fu-berlin.de/diseasome/resource/genes/TRPM6>. 
+        ?x owl:sameAs ?k. 
+        ?l <http://www4.wiwiss.fu-berlin.de/sider/resource/sider/sideEffect> ?k . 
+}
