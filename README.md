@@ -63,10 +63,10 @@ Possible examples:
 * Show all persons who live in the USA. 
 
 ### Evaluation 
-Note that more advanced example on 3 real-world datasets tested with Bio-SODA are available at the demo page [here](http://biosoda.expasy.org/welcome/). A detailed analysis of results across multiple systems tested with the 3 datasets, part of our VLDB submission, is available in the [Evaluation](https://github.com/anazhaw/Bio-SODA/tree/master/Evaluation) folder.
+Note that more advanced example on 3 real-world datasets tested with Bio-SODA are available at the demo page [here](http://biosoda.expasy.org/welcome/). The queries used for benchmarking the system are available in the [Benchmarks](https://github.com/anazhaw/Bio-SODA/tree/master/Benchmarks) folder. Furthemore, a detailed analysis of results across multiple systems tested with the 3 datasets, is available in the [Evaluation](https://github.com/anazhaw/Bio-SODA/tree/master/Evaluation) folder.
 
 The results can be reproduced by testing questions on the demo pages of the three datasets or by uploading data in a new installation of the system and processing it in Bio-SODA as described above. For example, official datasets for the QALD4 biomedical benchmark can be downloaded from [here](https://github.com/ag-sc/QALD/tree/master/4/data).
 
 We thank Lukas Blunschi for the code base of [SODA](https://dl.acm.org/doi/10.14778/2336664.2336667), which was the foundation for the development of Bio-SODA.
 
-Bio-SODA is a developing research prototype, with many improvements still planned in the pipeline. Please contribute!
+Bio-SODA is a developing research prototype, with many improvements still planned in the pipeline. Contributions are welcome in the form of Pull Requests, while bugs or suggestions for improvement can be reported using the Issues tab.
