@@ -1,0 +1,34 @@
+# paralogs of genes expressed in the liver of the rat
+
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX genex: <http://purl.org/genex#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX orth: <http://purl.org/net/orth#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+SELECT DISTINCT ?id ?OMA_LINK WHERE {
+	SELECT * {
+		SERVICE <https://bgee.org/sparql/> {
+			SELECT DISTINCT ?gene ?id {
+				?gene a orth:Gene .
+				?gene genex:isExpressedIn ?cond .
+				?cond genex:hasAnatomicalEntity ?anat .
+				?anat rdfs:label 'liver' .
+				?gene orth:organism ?o .
+				?o obo:RO_0002162 ?taxon .
+				?gene dcterms:identifier ?id .
+				?taxon up:commonName 'rat' .
+			}
+			LIMIT 10
+		}
+		SERVICE <https://sparql.omabrowser.org/lode/sparql> {
+			?cluster a orth:ParalogsCluster .
+			?cluster orth:hasHomologousMember ?node1 .
+			?cluster orth:hasHomologousMember ?node2 .
+			?node2 orth:hasHomologousMember* ?protein2 .
+			?node1 orth:hasHomologousMember* ?protein1 .
+			?protein1 dcterms:identifier ?id .
+			?protein2 rdfs:seeAlso ?OMA_LINK .
+			FILTER ( ?node1 != ?node2 )
+		}
+	}
+}

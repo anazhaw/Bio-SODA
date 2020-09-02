@@ -1,0 +1,7 @@
+# Show all fruit fly genes
+
+SELECT DISTINCT ?gene  WHERE {
+?gene <http://purl.org/net/orth#organism> ?organism.
+?organism <http://purl.obolibrary.org/obo/RO_0002162> <http://purl.uniprot.org/taxonomy/7227>.
+
+}

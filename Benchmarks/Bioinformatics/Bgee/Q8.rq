@@ -1,0 +1,15 @@
+# Anatomical entities in rats where the apoc1 gene is expressed
+
+PREFIX up:<http://purl.uniprot.org/core/> 
+PREFIX genex:<http://purl.org/genex#> 
+PREFIX obo:<http://purl.obolibrary.org/obo/>
+select distinct ?anatEntity ?anatName {
+?seq a orth:Gene.
+?expr genex:hasSequenceUnit ?seq.
+?seq rdfs:label ?geneName .
+?expr genex:hasExpressionCondition ?cond.
+?cond genex:hasAnatomicalEntity ?anatEntity.
+?anatEntity rdfs:label ?anatName.
+?cond obo:RO_0002162 ?taxon. #in taxon property.
+?taxon up:commonName 'rat'.
+FILTER (LCASE(?geneName) = 'apoc1' )}

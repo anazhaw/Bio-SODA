@@ -1,0 +1,17 @@
+# Anatomical entities at the mouse’s adult stage where the apoc1 gene is expressed
+
+PREFIX up:<http://purl.uniprot.org/core/> 
+PREFIX genex:<http://purl.org/genex#> 
+PREFIX obo:<http://purl.obolibrary.org/obo/>
+select distinct ?anatEntity ?anatName {
+?seq a orth:Gene.
+?expr genex:hasSequenceUnit ?seq.
+?seq rdfs:label ?geneName .
+?expr genex:hasExpressionCondition ?cond.
+?cond genex:hasAnatomicalEntity ?anatEntity.
+?anatEntity rdfs:label ?anatName.
+?cond genex:hasDevelopmentalStage ?stage.
+?stage  rdfs:label  ?stageName.
+?cond obo:RO_0002162 ?taxon. #in taxon property.
+?taxon up:commonName 'mouse'.
+FILTER ( contains(?stageName,""adult"" && LCASE(?geneName) = 'apoc1' )}

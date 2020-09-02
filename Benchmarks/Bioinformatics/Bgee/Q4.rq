@@ -1,0 +1,11 @@
+# List the labels and identifiers of fruit fly genes in bgee
+
+PREFIX up:<http://purl.uniprot.org/core/> 
+PREFIX orth:<http://purl.org/net/orth#> 
+PREFIX obo:<http://purl.obolibrary.org/obo/>
+select ?gene ?geneName {
+?gene a orth:Gene .
+ ?gene rdfs:label ?geneName .
+    ?gene orth:organism ?taxon .
+ ?taxon obo:RO_0002162 ?species . #in taxon property .
+?taxon up:commonName 'fruit fly'.}

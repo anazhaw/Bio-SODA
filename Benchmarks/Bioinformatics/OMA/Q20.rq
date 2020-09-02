@@ -1,0 +1,22 @@
+# The percentage of proteins in Drosophila melanogaster that have at least one paralogous protein
+
+prefix sio:<http://semanticscience.org/resource/>
+prefix obo:<http://purl.obolibrary.org/obo/>
+select (count(distinct ?PROTEIN) as ?num_paralogy ) ?total 
+xsd:float(?num_paralogy)*100/xsd:float(?total) as ?result
+where {
+?cluster a orth:ParalogsCluster.
+?cluster orth:hasHomologousMember ?node1.
+?cluster orth:hasHomologousMember ?node2. 
+?node2 orth:hasHomologousMember* ?PROTEIN. 
+?node1 orth:hasHomologousMember* ?IS_PARALOGOUS_TO_PROTEIN.
+?PROTEIN a orth:Protein.
+?PROTEIN orth:organism/obo:RO_0002162/up:scientificName 'Drosophila melanogaster' .
+?IS_PARALOGOUS_TO_PROTEIN a orth:Protein.
+?IS_PARALOGOUS_TO_PROTEIN orth:organism/obo:RO_0002162/up:scientificName 'Drosophila melanogaster'.
+      { select count(distinct ?protein_total) as ?total where 
+         {?protein_total a orth:Protein. 
+         ?protein_total orth:organism/obo:RO_0002162/up:scientificName  'Drosophila melanogaster' }
+              
+} 
+ filter(?node1 != ?node2)}

@@ -1,0 +1,17 @@
+# Number of anatomical entities per species and expression confidence ordered by species common name where the apoc1 gene is expressed
+
+PREFIX up:<http://purl.uniprot.org/core/> 
+PREFIX genex:<http://purl.org/genex#> 
+PREFIX obo:<http://purl.obolibrary.org/obo/>
+select (count(?anatEntity) as ?c) ?specName ?confidence {
+?seq a orth:Gene.
+?expr genex:hasSequenceUnit ?seq.
+?expr genex:hasConfidenceLevel ?confidence.
+?seq rdfs:label ?geneName .
+?expr genex:hasExpressionCondition ?cond.
+?cond genex:hasAnatomicalEntity ?anatEntity.
+?cond obo:RO_0002162 ?taxon. #in taxon property.
+?taxon up:commonName ?specName.
+FILTER (LCASE(?geneName) = 'apoc1' )}
+group by ?taxon ?confidence
+order by ?specName

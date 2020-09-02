@@ -1,0 +1,10 @@
+# show fruit fly developmental stages
+
+SELECT DISTINCT ?develStage WHERE {
+?expressioncondition <http://purl.org/genex#hasDevelopmentalStage> ?develStage.
+?expressioncondition a <http://purl.org/genex#ExpressionCondition>.
+?taxon <http://purl.uniprot.org/core/scientificName> ?speciesname.
+?expressioncondition <http://purl.obolibrary.org/obo/RO_0002162> ?taxon.
+?taxon <http://purl.uniprot.org/core/commonName> ?taxon_commonname.
+FILTER (contains(lcase(str(?taxon_commonname)), "fruit fly"))
+}

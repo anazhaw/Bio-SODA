@@ -1,0 +1,11 @@
+# How many proteins (and their labels) per species are present in OMA database?
+
+select ?taxon ?name count(?protein) as ?Protein_count
+where {
+?protein a orth:Protein.
+?protein  orth:organism ?organism.
+?inTaxon rdfs:label 'in taxon'@en.
+?organism ?inTaxon ?taxon.
+?taxon  up:scientificName ?name.
+
+}group by ?taxon ?name

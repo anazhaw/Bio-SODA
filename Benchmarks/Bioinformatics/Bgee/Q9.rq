@@ -1,0 +1,17 @@
+# Anatomical entities for which apoc1 is not expressed
+
+PREFIX up:<http://purl.uniprot.org/core/> 
+PREFIX genex:<http://purl.org/genex#> 
+PREFIX obo:<http://purl.obolibrary.org/obo/>
+select ?anatEntity ?anatName {
+?anatEntity a genex:AnatomicalEntity. 
+?anatEntity rdfs:label ?anatName. 
+FILTER NOT EXISTS {
+?seq a orth:Gene.
+?expr genex:hasSequenceUnit ?seq.
+?seq rdfs:label ?geneName .
+?expr genex:hasExpressionCondition ?cond.
+?cond genex:hasAnatomicalEntity ?anatEntity.
+?anatEntity a genex:AnatomicalEntity. 
+FILTER (LCASE(?geneName) = 'apoc1' ) } 
+}

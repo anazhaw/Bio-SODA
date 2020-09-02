@@ -1,0 +1,9 @@
+# show all drosophila species
+
+SELECT DISTINCT ?rank ?rank_label ?speciesname ?taxon ?taxon_scientificname WHERE {
+?taxon a <http://purl.uniprot.org/core/Taxon>.
+?taxon <http://purl.uniprot.org/core/rank> <http://purl.uniprot.org/core/Species>.
+?taxon <http://purl.uniprot.org/core/scientificName> ?speciesname.
+?taxon <http://purl.uniprot.org/core/scientificName> ?taxon_scientificname.
+FILTER (contains(lcase(str(?taxon_scientificname)), "drosophila"))
+}

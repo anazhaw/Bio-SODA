@@ -1,0 +1,8 @@
+# the scientific name of species in bgee and their corresponding taxon
+
+PREFIX up:<http://purl.uniprot.org/core/> 
+select * {
+	?taxon a up:Taxon. 
+	?taxon up:scientificName ?name.
+	?taxon up:rank up:Species.
+ }

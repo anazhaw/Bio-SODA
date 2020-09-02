@@ -1,0 +1,46 @@
+# mouse proteins which are expressed in the liver and are orthologous to human INS protein .
+
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX genex: <http://purl.org/genex#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX orth: <http://purl.org/net/orth#>
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX lscr: <http://purl.org/lscr#>
+SELECT ?name1 ?protein1 ?name2 ?protein2 ?OMA_link2 ?anatomicalEntity {
+	SELECT DISTINCT * {
+		SERVICE <https://bgee.org/sparql/> {
+			?taxon up:commonName 'human' ;
+				up:commonName ?name1 .
+			?taxon2 up:commonName 'mouse' ;
+				up:commonName ?name2 .
+		}
+		SERVICE <https://sparql.omabrowser.org/sparql/> {
+			?cluster a orth:OrthologsCluster .
+			?cluster orth:hasHomologousMember ?node1 .
+			?cluster orth:hasHomologousMember ?node2 .
+			?node2 orth:hasHomologousMember* ?protein2 .
+			?node1 orth:hasHomologousMember* ?protein1 .
+			?protein1 a orth:Protein .
+			?protein1 rdfs:label 'INS' ;
+				orth:organism/obo:RO_0002162 ?taxon .
+			?protein2 a orth:Protein ;
+				sio:SIO_010079 ?gene ; #is encoded by
+				orth:organism/obo:RO_0002162 ?taxon2 .
+			?gene lscr:xrefEnsemblGene ?geneEns .
+			?protein2 rdfs:seeAlso ?OMA_link2 .
+			FILTER ( ?node1 != ?node2 )
+		}
+		SERVICE <https://bgee.org/sparql/> {
+			?geneB a orth:Gene .
+				?geneB genex:isExpressedIn ?cond .
+				?cond genex:hasAnatomicalEntity ?anat .
+				?geneB lscr:xrefEnsemblGene ?geneEns .
+			?anat rdfs:label 'liver' ;
+				rdfs:label ?anatomicalEntity .
+			?geneB orth:organism ?o .
+			?o obo:RO_0002162 ?taxon2 .
+		}
+	}
+	LIMIT 10
+}
+LIMIT 10

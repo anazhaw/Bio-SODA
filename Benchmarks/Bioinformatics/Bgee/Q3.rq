@@ -1,0 +1,12 @@
+# In which species is the Mt-co1 gene present?
+
+PREFIX up:<http://purl.uniprot.org/core/> 
+PREFIX orth:<http://purl.org/net/orth#> 
+PREFIX obo:<http://purl.obolibrary.org/obo/>
+select ?name {
+?gene a orth:Gene. 
+ ?gene rdfs:label  ?geneName.
+?gene orth:organism ?organism. #orth v2
+?organism obo:RO_0002162 ?taxon. #label: in taxon.
+?taxon up:scientificName ?name. 
+  FILTER (UCASE(?geneName) = UCASE('Mt-co1') )}

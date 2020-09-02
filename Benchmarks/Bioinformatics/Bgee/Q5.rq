@@ -1,0 +1,13 @@
+# Human anatomical entities at young adult developmental stage
+
+PREFIX up:<http://purl.uniprot.org/core/> 
+PREFIX genex:<http://purl.org/genex#> 
+PREFIX obo:<http://purl.obolibrary.org/obo/>
+select distinct ?anatName {
+?cond genex:hasAnatomicalEntity ?anatEntity.
+?anatEntity rdfs:label ?anatName.
+?cond genex:hasDevelopmentalStage ?stage.
+?stage  rdfs:label  ?stageName.
+?cond obo:RO_0002162 ?taxon. #in taxon property.
+?taxon up:commonName 'human'.
+FILTER (contains(?stageName,"young") && contains(?stageName,"adult") )}

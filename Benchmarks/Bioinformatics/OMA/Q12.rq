@@ -1,0 +1,11 @@
+# show me all rat proteins
+
+select ?name 
+where {
+?protein a orth:Protein.
+?protein  orth:organism ?organism.
+?inTaxon rdfs:label 'in taxon'@en.
+?organism ?inTaxon ?taxon.
+?taxon  up:scientificName 'Rattus norvegicus'.
+?protein rdfs:label ?name.
+}

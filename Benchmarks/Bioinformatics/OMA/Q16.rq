@@ -1,0 +1,18 @@
+# Retrieve proteins that are paralogous to the human HBB and their cross reference to Uniprot.
+
+select ?protein2  ?Oma_link  ?Uniprot_link{
+?cluster a orth:ParalogsCluster.
+?cluster orth:hasHomologousMember ?node1.
+?cluster orth:hasHomologousMember ?node2.
+?node2 orth:hasHomologousMember* ?protein2.
+?node1 orth:hasHomologousMember* ?protein1.
+?protein1 a orth:Protein.
+?protein1 rdfs:label 'HBB'. 
+?protein1 orth:organism ?organism.
+?inTaxon rdfs:label 'in taxon'@en.
+?organism ?inTaxon ?taxon.
+?taxon  up:scientificName 'Homo sapiens'.
+?protein2 a orth:Protein. 
+?protein2  lscr:xrefUniprot ?Uniprot_link. 
+filter(?node1 != ?node2)
+}

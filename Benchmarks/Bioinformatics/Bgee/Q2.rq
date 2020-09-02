@@ -1,0 +1,11 @@
+# genes with lung in the description
+
+PREFIX up:<http://purl.uniprot.org/core/> 
+PREFIX orth:<http://purl.org/net/orth#> 
+PREFIX dcterms:<http://purl.org/dc/terms/>
+select ?geneName ?geneId {
+?gene a orth:Gene. 
+ ?gene rdfs:label  ?geneName.
+?gene dcterms:identifier ?geneId.
+ ?gene dcterms:description ?desc.
+ FILTER CONTAINS(?desc, 'lung')}

@@ -1,0 +1,6 @@
+# show mouse anatomical entities
+
+SELECT DISTINCT ?anatomicalentity WHERE {
+?expressioncondition <http://purl.org/genex#hasAnatomicalEntity> ?anatomicalentity.
+?expressioncondition <http://purl.obolibrary.org/obo/RO_0002162> <http://purl.uniprot.org/taxonomy/10090>
+}

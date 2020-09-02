@@ -1,0 +1,9 @@
+# Anatomical entities where FBgn0031395 is expressed
+
+SELECT DISTINCT ?anatomicalentity WHERE {
+?gene <http://purl.obolibrary.org/obo/RO_0002206> ?anatomicalentity 
+?anatomicalentity <http://www.w3.org/2000/01/rdf-schema#label> ?anatomicalentity_label.
+?gene a <http://purl.org/net/orth#Gene>.
+?gene <http://purl.org/dc/terms/identifier> ?gene_identifier.
+FILTER (contains(lcase(str(?gene_identifier)), ""fbgn0031395""))
+}
