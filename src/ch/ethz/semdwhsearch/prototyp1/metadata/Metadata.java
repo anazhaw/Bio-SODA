@@ -204,7 +204,7 @@ public class Metadata {
 				}
 			}
 		}
-		ModelInfo infoSparql = new ModelInfo(allModels, Constants.MODEL_NAME, TYPE_DO, mapping, false);
+		ModelInfo infoSparql = new ModelInfo(allModels, Constants.MODEL_NAME, TYPE_DO, mapping, reloadIdx);
 		doInfos.add(infoSparql);
 
 		logger.info("RDF dataset added.");
