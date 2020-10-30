@@ -76,6 +76,8 @@ public class ModelInfo {
 	 */
 	private final Map<String, Set<String>> literalMap;
 
+	private Map<String, String> classMap = new HashMap<String, String>();
+
 	private SummaryRDFGraph summaryGraph;
 
 	//todo: fix this
@@ -93,13 +95,15 @@ public class ModelInfo {
 		this.literalMap = new HashMap<String, Set<String>>();
 		this.model = model;
 
-		if(!isRemote) {
-			// parse model from disk
-			parseModel(model, mapping);		
-		} else {
-			// parse from remote sparql endpoint
-			String endpoint = Constants.REMOTE_REPO;
-			parseModelFromRemote(endpoint, mapping);
+		if(reloadIndex){
+			if(!isRemote) {
+				// parse model from disk
+				parseModel(model, mapping);
+			} else {
+				// parse from remote sparql endpoint
+				String endpoint = Constants.REMOTE_REPO;
+				parseModelFromRemote(endpoint, mapping);
+			}
 		}
 
 		// logging info output
@@ -255,7 +259,11 @@ public class ModelInfo {
 				if (pnsCaptionSet.size() == 0 || pnsCaptionSet.contains(localName.toLowerCase())) {
 
 					//here also get CLASS of subject
-					String className = SPARQLUtilsRemote.getTypeOfResource(Constants.REMOTE_REPO, subjectUri);
+					String className = classMap.get(subjectUri);
+					if(className == null){
+						className = SPARQLUtilsRemote.getTypeOfResource(Constants.REMOTE_REPO, subjectUri);
+						classMap.put(subjectUri, className);
+					}
 
 					// caption
 					String captionMapKey = subjectUri + "###" + className + "###" + "<"+propertyURI+">";
@@ -372,7 +380,11 @@ public class ModelInfo {
 
 			//subject
 			String subjUri = subject.getURI();
-			String className = SPARQLUtilsRemote.getTypeOfResource(Constants.REMOTE_REPO, subjUri);
+			String className = classMap.get(subjUri);
+                        if(className == null) {
+				className = SPARQLUtilsRemote.getTypeOfResource(Constants.REMOTE_REPO, subjUri);
+				classMap.put(subjUri, className);
+                        }
 			String key =  subjUri + "###" + className + "###" + ""; //property is the URI
 			//todo: decide if we want to only do this for URIs which have no label assigned
 			if(subjUri != null && 
@@ -402,7 +414,11 @@ public class ModelInfo {
 
 			//predicate
 			String propUri = property.getURI();
-			className = SPARQLUtilsRemote.getTypeOfResource(Constants.REMOTE_REPO, propUri);
+			className = classMap.get(propUri);
+                        if(className == null){
+				className = SPARQLUtilsRemote.getTypeOfResource(Constants.REMOTE_REPO, propUri);
+                                classMap.put(propUri, className);
+                        }
 			key =  propUri + "###" + className + "###" + "";
 			if(propUri != null  && 
 				(Constants.indexURIFragments 
@@ -432,7 +448,11 @@ public class ModelInfo {
 			//object
 			if (!object.isLiteral() && !object.isAnon()) {
 				String objUri = object.as(Resource.class).getURI();
-				className = SPARQLUtilsRemote.getTypeOfResource(Constants.REMOTE_REPO, objUri);
+				className = classMap.get(objUri);
+                                if(className == null){
+                                        className = SPARQLUtilsRemote.getTypeOfResource(Constants.REMOTE_REPO, objUri);
+                                        classMap.put(objUri, className);
+                                }
 				key =  objUri + "###" + className + "###" + "";
 				if(objUri != null && (Constants.indexURIFragments 
 						|| (!(labelDefinedForURI.contains(objUri))))) {
@@ -535,17 +555,16 @@ public class ModelInfo {
 		ArrayList<String> propertiesToIndex = (ArrayList<String>) SPARQLUtilsRemote.execRemoteQuery(query, endpoint);
 		
 		System.out.println("Will index: "+ propertiesToIndex);
-		
+
 		// 2. iterate through all and associate literal with subject as done above
 
 		// property names caption configured by user
 		Set<String> pnsCaptionSet = mapping.getGeneralPropNamesCaptionSet();
-		
+
 		for(String propertyURI : propertiesToIndex) {
 			
 			// get only the fragment name, e.g. "label", "identifier", "name" etc - to be compliant with how these are configured in the metadata file
 			String propName = SPARQLUtilsRemote.getLiteralFromString(propertyURI);
-			
 			//index literals as indicated by the mapping properties, e.g. label (or everything if the set is empty)
 			if (pnsCaptionSet.size() == 0 || pnsCaptionSet.contains(propName.toLowerCase())) {
 				// paginate! LIMIT + OFFSET
@@ -573,8 +592,12 @@ public class ModelInfo {
 						
 				
 						//here also get CLASS of subject
-						String className = SPARQLUtilsRemote.getTypeOfResource(Constants.REMOTE_REPO, subjectUri);
-			
+						//add to map to avoid redundant queries
+						String className = classMap.get(subjectUri);
+						if(className == null){
+							className = SPARQLUtilsRemote.getTypeOfResource(Constants.REMOTE_REPO, subjectUri);
+							classMap.put(subjectUri, className);
+						}
 						// caption
 						String captionMapKey = subjectUri + "###" + className + "###" + propertyURI;
 			
