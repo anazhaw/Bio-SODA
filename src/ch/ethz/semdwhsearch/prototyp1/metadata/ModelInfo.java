@@ -92,8 +92,10 @@ public class ModelInfo {
 		this.model = model;
 
 		// parse model
-		parseModel(model, mapping);
-
+		if(reloadIndex) {
+			parseModel(model, mapping);
+		}
+		
 		// logging info output
 		int nU = uris.size();
 		int nE = edges.size();
