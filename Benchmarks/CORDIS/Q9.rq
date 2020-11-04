@@ -1,0 +1,10 @@
+# organizations in the eawareness project
+
+SELECT DISTINCT ?ecproject ?ecproject_acronym ?ecproject_title ?organization ?organization_extendedname WHERE {
+?ecproject <http://unics.cloud/ontology#coordinator> ?organization.
+?ecproject a <http://unics.cloud/ontology#EC-Project>.
+?organization <http://unics.cloud/ontology#extendedName> ?organization_extendedname.
+?ecproject <http://unics.cloud/ontology#title> ?ecproject_title.
+?ecproject <http://unics.cloud/ontology#acronym> ?ecproject_acronym.
+FILTER (contains(lcase(str(?ecproject_acronym)), "eawareness"))
+}

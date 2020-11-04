@@ -1,0 +1,9 @@
+# Starting year of the project theseus
+
+SELECT DISTINCT ?ecproject ?ecproject_acronym ?ecproject_startingyear ?ecproject_title WHERE {
+?ecproject a <http://unics.cloud/ontology#EC-Project>.
+?ecproject <http://unics.cloud/ontology#title> ?ecproject_title.
+?ecproject <http://unics.cloud/ontology#startingYear> ?ecproject_startingyear.
+?ecproject <http://unics.cloud/ontology#acronym> ?ecproject_acronym.
+FILTER (contains(lcase(str(?ecproject_acronym)), "theseus"))
+}

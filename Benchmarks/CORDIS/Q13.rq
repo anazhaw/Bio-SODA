@@ -1,0 +1,11 @@
+# count the ERC projects in the applied life sciences domain
+
+SELECT (count (distinct ?ercproject) as ?count) WHERE {
+?ercproject a <http://unics.cloud/ontology#ERC-Project>. 
+?ercpanel a <http://unics.cloud/ontology#ERC-Panel>.
+?ercproject a <http://unics.cloud/ontology#ERC-Project>.
+?ercproject <http://unics.cloud/ontology#ercPanel> ?ercpanel.
+?ercpanel <http://unics.cloud/ontology#ercResearchDomain> ?ercresearchdomain.
+?ercpanel <http://unics.cloud/ontology#extendedName> ?ercpanel_extendedname.
+FILTER (contains(lcase(str(?ercpanel_extendedname)), "applied life sciences"))
+}

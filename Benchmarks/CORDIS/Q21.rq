@@ -1,0 +1,21 @@
+# full name of principal investigators of projects hosted in france
+
+SELECT DISTINCT ?country ?country_extendedname ?ecactivitytype ?ecactivitytype_extendedname ?ecparticipantreified ?ecparticipantreified_extendedname ?ecproject ?ecproject_title ?person ?person_fullname ?roleinproject ?roleinproject_extendedname ?roleinproject_shortname WHERE {
+?ecactivitytype <http://unics.cloud/ontology#extendedName> ?ecactivitytype_extendedname.
+?ecparticipantreified <http://unics.cloud/ontology#ecProject> ?ecproject.
+?ecparticipantreified a <http://unics.cloud/ontology#EC-Participant-Reified>.
+?person <http://unics.cloud/ontology#fullName> ?person_fullname.
+?ecactivitytype a <http://unics.cloud/ontology#EC-ActivityType>.
+?ecparticipantreified <http://unics.cloud/ontology#country> ?country.
+?roleinproject <http://unics.cloud/ontology#extendedName> ?roleinproject_extendedname.
+?ecproject a <http://unics.cloud/ontology#EC-Project>.
+?ecparticipantreified <http://unics.cloud/ontology#roleInProject> ?roleinproject.
+?ecproject <http://unics.cloud/ontology#title> ?ecproject_title.
+?ecproject <http://unics.cloud/ontology#principalInvestigator> ?person.
+?ecparticipantreified <http://unics.cloud/ontology#extendedName> ?ecparticipantreified_extendedname.
+?ecparticipantreified <http://unics.cloud/ontology#ecActivityType> ?ecactivitytype.
+?country <http://unics.cloud/ontology#extendedName> ?country_extendedname.
+?roleinproject <http://unics.cloud/ontology#shortName> ?roleinproject_shortname.
+FILTER (contains(lcase(str(?country_extendedname)), "france"))
+FILTER (contains(lcase(str(?roleinproject_shortname)), "host"))
+}

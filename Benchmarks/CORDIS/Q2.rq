@@ -1,0 +1,8 @@
+# what is the country code of latvia?
+
+SELECT DISTINCT ?country ?country_alpha2 ?country_extendedname WHERE {
+?country <http://unics.cloud/ontology#alpha2> ?country_alpha2.
+?country a <http://unics.cloud/ontology#Country>.
+?country <http://unics.cloud/ontology#extendedName> ?country_extendedname.
+FILTER (contains(lcase(str(?country_extendedname)), "latvia"))
+}

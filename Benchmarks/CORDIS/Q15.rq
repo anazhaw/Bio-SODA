@@ -1,0 +1,10 @@
+# linguistics projects related to the human mind
+
+SELECT DISTINCT ?ecproject ?ecproject_title ?ercpanel ?ercpanel_extendedname WHERE {
+?ecproject a <http://unics.cloud/ontology#EC-Project>.
+?ecproject <http://unics.cloud/ontology#ercPanel> ?ercpanel.
+?ercpanel <http://unics.cloud/ontology#extendedName> ?ercpanel_extendedname.
+?ecproject <http://unics.cloud/ontology#title> ?ecproject_title.
+FILTER (contains(lcase(str(?ercpanel_extendedname)), "human mind"))
+FILTER (contains(lcase(str(?ecproject_title)), "linguistics"))
+}

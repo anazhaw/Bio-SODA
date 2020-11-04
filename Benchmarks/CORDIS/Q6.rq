@@ -1,0 +1,12 @@
+# show ERC research domains in the diagnostics tools panel
+
+SELECT DISTINCT ?ecproject ?ecproject_title ?ercpanel ?ercpanel_extendedname ?ercresearchdomain ?ercresearchdomain_extendedname WHERE {
+?ecproject a <http://unics.cloud/ontology#EC-Project>.
+?ecproject <http://unics.cloud/ontology#title> ?ecproject_title.
+?ercresearchdomain <http://unics.cloud/ontology#extendedName> ?ercresearchdomain_extendedname.
+?ercpanel a <http://unics.cloud/ontology#ERC-Panel>.
+?ecproject <http://unics.cloud/ontology#ercPanel> ?ercpanel.
+?ercpanel <http://unics.cloud/ontology#ercResearchDomain> ?ercresearchdomain.
+?ercpanel <http://unics.cloud/ontology#extendedName> ?ercpanel_extendedname.
+FILTER (contains(lcase(str(?ercpanel_extendedname)), "diagnostic tool"))
+}

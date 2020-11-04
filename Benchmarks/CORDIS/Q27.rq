@@ -1,0 +1,21 @@
+# projects including participants from greece and romania
+
+SELECT DISTINCT ?ecproject ?ecproject_title WHERE {
+?ecproject <http://unics.cloud/ontology#title> ?ecproject_title.
+    FILTER EXISTS { 
+?ecparticipantreified <http://unics.cloud/ontology#ecProject> ?ecproject.
+?ecparticipantreified a <http://unics.cloud/ontology#EC-Participant-Reified>.
+?ecparticipantreified <http://unics.cloud/ontology#extendedName> ?ecparticipantreified_extendedname.
+?ecparticipantreified <http://unics.cloud/ontology#country> ?country.
+?country <http://unics.cloud/ontology#extendedName> ?country_extendedname.
+        FILTER (contains(lcase(str(?country_extendedname)), "greece"))
+        }
+        FILTER EXISTS { 
+?ecparticipantreified2 <http://unics.cloud/ontology#ecProject> ?ecproject.
+?ecparticipantreified2 a <http://unics.cloud/ontology#EC-Participant-Reified>.
+?ecparticipantreified2 <http://unics.cloud/ontology#extendedName> ?ecparticipantreified_extendedname2.
+?ecparticipantreified2 <http://unics.cloud/ontology#country> ?country2.
+?country2 <http://unics.cloud/ontology#extendedName> ?country_extendedname2.
+        FILTER (contains(lcase(str(?country_extendedname2)), "romania"))
+        }
+} 

@@ -1,0 +1,19 @@
+# projects starting in 2016 whose host is the university of zurich
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?ecparticipantreified ?ecparticipantreified_extendedname ?ecproject ?ecproject_startingyear ?ecproject_title ?organization ?organization_extendedname ?roleinproject ?roleinproject_extendedname ?roleinproject_shortname WHERE {
+?ecproject a <http://unics.cloud/ontology#EC-Project>.
+?ecparticipantreified <http://unics.cloud/ontology#roleInProject> ?roleinproject.
+?ecproject <http://unics.cloud/ontology#title> ?ecproject_title.
+?ecparticipantreified <http://unics.cloud/ontology#ecProject> ?ecproject.
+?ecparticipantreified a <http://unics.cloud/ontology#EC-Participant-Reified>.
+?ecparticipantreified <http://unics.cloud/ontology#extendedName> ?ecparticipantreified_extendedname.
+?ecparticipantreified <http://unics.cloud/ontology#organization> ?organization.
+?ecproject <http://unics.cloud/ontology#startingYear> ?ecproject_startingyear.
+?roleinproject <http://unics.cloud/ontology#extendedName> ?roleinproject_extendedname.
+?roleinproject <http://unics.cloud/ontology#shortName> ?roleinproject_shortname.
+?organization <http://unics.cloud/ontology#extendedName> ?organization_extendedname.
+FILTER (contains(lcase(str(?roleinproject_shortname)), "host"))
+FILTER (?ecproject_startingyear = 2016)
+FILTER (contains(lcase(str(?organization_extendedname)), "university of zurich"))
+}

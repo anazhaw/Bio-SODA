@@ -1,0 +1,9 @@
+# projects started after November 2019
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?ecproject ?ecproject_startingdate ?ecproject_title WHERE {
+?ecproject a <http://unics.cloud/ontology#EC-Project>.
+?ecproject <http://unics.cloud/ontology#title> ?ecproject_title.
+?ecproject <http://unics.cloud/ontology#startingDate> ?ecproject_startingdate.
+  FILTER (?ecproject_startingdate > "2019-11-01T00:00:00Z"^^xsd:dateTime)
+}

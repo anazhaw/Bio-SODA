@@ -1,0 +1,13 @@
+# grants received by projects in big data
+
+SELECT DISTINCT ?ecparticipantreified ?ecparticipantreified_eccontribution ?ecparticipantreified_extendedname ?ecproject ?ecproject_title ?ectopic ?ectopic_extendedname WHERE {
+?ecproject a <http://unics.cloud/ontology#EC-Project>.
+?ecparticipantreified <http://unics.cloud/ontology#ecContribution> ?ecparticipantreified_eccontribution.
+?ecproject <http://unics.cloud/ontology#title> ?ecproject_title.
+?ecproject <http://unics.cloud/ontology#ecTopic> ?ectopic.
+?ecparticipantreified <http://unics.cloud/ontology#ecProject> ?ecproject.
+?ecparticipantreified a <http://unics.cloud/ontology#EC-Participant-Reified>.
+?ecparticipantreified <http://unics.cloud/ontology#extendedName> ?ecparticipantreified_extendedname.
+?ectopic <http://unics.cloud/ontology#extendedName> ?ectopic_extendedname.
+FILTER (contains(lcase(str(?ectopic_extendedname)), "big data"))
+}

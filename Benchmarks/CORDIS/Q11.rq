@@ -1,0 +1,9 @@
+# panels of projects in genome editing
+
+SELECT DISTINCT ?ecproject ?ecproject_title ?ercpanel ?ercpanel_extendedname WHERE {
+?ercpanel <http://unics.cloud/ontology#extendedName> ?ercpanel_extendedname.
+?ecproject a <http://unics.cloud/ontology#EC-Project>.
+?ecproject <http://unics.cloud/ontology#ercPanel> ?ercpanel.
+?ecproject <http://unics.cloud/ontology#title> ?ecproject_title.
+FILTER (contains(lcase(str(?ecproject_title)), "genome editing"))
+}

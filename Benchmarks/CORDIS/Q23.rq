@@ -1,0 +1,19 @@
+# universities which are coordinators in climate change projects
+
+SELECT DISTINCT ?ecparticipantreified ?ecparticipantreified_extendedname ?ecproject ?ecproject_title ?ecsubjectarea ?ecsubjectarea_extendedname ?organization ?organization_extendedname ?roleinproject ?roleinproject_extendedname ?roleinproject_shortname WHERE {
+?ecproject <http://unics.cloud/ontology#coordinator> ?organization.
+?ecproject a <http://unics.cloud/ontology#EC-Project>.
+?ecparticipantreified <http://unics.cloud/ontology#roleInProject> ?roleinproject.
+?ecproject <http://unics.cloud/ontology#ecSubjectArea> ?ecsubjectarea.
+?ecproject <http://unics.cloud/ontology#title> ?ecproject_title.
+?ecparticipantreified a <http://unics.cloud/ontology#EC-Participant-Reified>.
+?ecparticipantreified <http://unics.cloud/ontology#extendedName> ?ecparticipantreified_extendedname.
+?ecparticipantreified <http://unics.cloud/ontology#organization> ?organization.
+?roleinproject <http://unics.cloud/ontology#extendedName> ?roleinproject_extendedname.
+?organization <http://unics.cloud/ontology#extendedName> ?organization_extendedname.
+?roleinproject <http://unics.cloud/ontology#shortName> ?roleinproject_shortname.
+?ecsubjectarea <http://unics.cloud/ontology#extendedName> ?ecsubjectarea_extendedname.
+FILTER (contains(lcase(str(?organization_extendedname)), "university"))
+FILTER (contains(lcase(str(?roleinproject_shortname)), "coordinator"))
+FILTER (contains(lcase(str(?ecsubjectarea_extendedname)), "climate change"))
+}

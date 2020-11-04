@@ -1,0 +1,10 @@
+# find the country with the highest number of projects
+
+SELECT DISTINCT ?country ?country_extendedname (count (?ecproject) as ?projects_per_country) WHERE {
+?ecproject <http://unics.cloud/ontology#title> ?ecproject_title.
+?ecparticipantreified <http://unics.cloud/ontology#ecProject> ?ecproject.
+?ecparticipantreified a <http://unics.cloud/ontology#EC-Participant-Reified>.
+?ecparticipantreified <http://unics.cloud/ontology#extendedName> ?ecparticipantreified_extendedname.
+?ecparticipantreified <http://unics.cloud/ontology#country> ?country.
+?country <http://unics.cloud/ontology#extendedName> ?country_extendedname.
+} group by ?country ?country_extendedname order by DESC(?projects_per_country) limit 1

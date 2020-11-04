@@ -1,0 +1,9 @@
+# ERC projects whose principal investigator is Michael Smith
+
+SELECT DISTINCT ?ercproject ?ercproject_title ?person ?person_fullname WHERE {
+?ercproject a <http://unics.cloud/ontology#ERC-Project>.
+?ercproject <http://unics.cloud/ontology#principalInvestigator> ?person.
+?ercproject <http://unics.cloud/ontology#title> ?ercproject_title.
+?person <http://unics.cloud/ontology#fullName> ?person_fullname.
+FILTER (contains(lcase(str(?person_fullname)), "michael smith"))
+}

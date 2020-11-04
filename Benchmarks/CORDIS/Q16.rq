@@ -1,0 +1,15 @@
+# All projects that started in 2015 in switzerland
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?country ?country_extendedname ?ecparticipantreified ?ecparticipantreified_extendedname ?ecproject ?ecproject_startingyear ?ecproject_title WHERE {
+?ecproject a <http://unics.cloud/ontology#EC-Project>.
+?ecproject <http://unics.cloud/ontology#title> ?ecproject_title.
+?ecparticipantreified <http://unics.cloud/ontology#ecProject> ?ecproject.
+?ecparticipantreified a <http://unics.cloud/ontology#EC-Participant-Reified>.
+?ecparticipantreified <http://unics.cloud/ontology#extendedName> ?ecparticipantreified_extendedname.
+?ecproject <http://unics.cloud/ontology#startingYear> ?ecproject_startingyear.
+?ecparticipantreified <http://unics.cloud/ontology#country> ?country.
+?country <http://unics.cloud/ontology#extendedName> ?country_extendedname.
+FILTER (?ecproject_startingyear = 2015)
+FILTER (contains(lcase(str(?country_extendedname)), "switzerland"))
+}

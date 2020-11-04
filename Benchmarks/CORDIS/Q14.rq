@@ -1,0 +1,11 @@
+# topics of projects in life sciences
+
+SELECT DISTINCT ?ecproject ?ecproject_title ?ecsubjectarea ?ecsubjectarea_extendedname ?ectopic ?ectopic_extendedname WHERE {
+?ecproject a <http://unics.cloud/ontology#EC-Project>.
+?ecproject <http://unics.cloud/ontology#ecSubjectArea> ?ecsubjectarea.
+?ecproject <http://unics.cloud/ontology#title> ?ecproject_title.
+?ecproject <http://unics.cloud/ontology#ecTopic> ?ectopic.
+?ectopic <http://unics.cloud/ontology#extendedName> ?ectopic_extendedname.
+?ecsubjectarea <http://unics.cloud/ontology#extendedName> ?ecsubjectarea_extendedname.
+FILTER (contains(lcase(str(?ecsubjectarea_extendedname)), "life science"))
+}

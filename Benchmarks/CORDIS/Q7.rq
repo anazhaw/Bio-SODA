@@ -1,0 +1,15 @@
+# what are the participants of the project alfred
+
+SELECT DISTINCT ?ecparticipantreified ?ecparticipantreified_extendedname ?ecproject ?ecproject_acronym ?ecproject_title ?roleinproject ?roleinproject_extendedname ?roleinproject_shortname WHERE {
+?ecproject a <http://unics.cloud/ontology#EC-Project>.
+?ecparticipantreified <http://unics.cloud/ontology#roleInProject> ?roleinproject.
+?ecproject <http://unics.cloud/ontology#title> ?ecproject_title.
+?ecparticipantreified a <http://unics.cloud/ontology#EC-Participant-Reified>.
+?ecparticipantreified <http://unics.cloud/ontology#extendedName> ?ecparticipantreified_extendedname.
+?ecproject <http://unics.cloud/ontology#ecParticipant> ?ecparticipantreified.
+?roleinproject <http://unics.cloud/ontology#extendedName> ?roleinproject_extendedname.
+?ecproject <http://unics.cloud/ontology#acronym> ?ecproject_acronym.
+?roleinproject <http://unics.cloud/ontology#shortName> ?roleinproject_shortname.
+FILTER (contains(lcase(str(?ecproject_acronym)), "alfred"))
+FILTER (contains(lcase(str(?roleinproject_shortname)), "participant"))
+}

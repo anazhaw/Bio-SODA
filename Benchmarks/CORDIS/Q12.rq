@@ -1,0 +1,12 @@
+# projects starting in 2019 with the university of zurich
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?ecproject ?ecproject_startingyear ?ecproject_title ?organization ?organization_extendedname WHERE {
+?ecproject <http://unics.cloud/ontology#coordinator> ?organization.
+?ecproject a <http://unics.cloud/ontology#EC-Project>.
+?ecproject <http://unics.cloud/ontology#title> ?ecproject_title.
+?ecproject <http://unics.cloud/ontology#startingYear> ?ecproject_startingyear.
+?organization <http://unics.cloud/ontology#extendedName> ?organization_extendedname.
+FILTER (contains(lcase(str(?organization_extendedname)), "university of zurich"))
+FILTER (?ecproject_startingyear = 2019)
+}

@@ -1,0 +1,8 @@
+# what is the city of opel automobile
+
+SELECT DISTINCT ?ecparticipantreified ?ecparticipantreified_cityname ?ecparticipantreified_extendedname WHERE {
+?ecparticipantreified <http://unics.cloud/ontology#cityName> ?ecparticipantreified_cityname.
+?ecparticipantreified a <http://unics.cloud/ontology#EC-Participant-Reified>.
+?ecparticipantreified <http://unics.cloud/ontology#extendedName> ?ecparticipantreified_extendedname.
+FILTER (contains(lcase(str(?ecparticipantreified_extendedname)), "opel automobile"))
+}

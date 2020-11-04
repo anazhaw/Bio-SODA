@@ -1,0 +1,7 @@
+# projects funded by the fp7 program
+
+SELECT DISTINCT ?ecproject  WHERE {
+?ecproject <http://unics.cloud/ontology#ecFrameworkProgram> ?ecframeworkprogram.
+?ecframeworkprogram <http://unics.cloud/ontology#shortName> ?ecframeworkprogram_shortname.
+FILTER (contains(lcase(str(?ecframeworkprogram_shortname)), "fp7"))
+}

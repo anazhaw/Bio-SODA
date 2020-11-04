@@ -1,0 +1,10 @@
+# ending year of projects in the area of climate change
+
+SELECT DISTINCT ?ecproject ?ecproject_endingyear ?ecproject_title ?ecsubjectarea ?ecsubjectarea_extendedname WHERE {
+?ecproject a <http://unics.cloud/ontology#EC-Project>.
+?ecproject <http://unics.cloud/ontology#ecSubjectArea> ?ecsubjectarea.
+?ecproject <http://unics.cloud/ontology#title> ?ecproject_title.
+?ecproject <http://unics.cloud/ontology#endingYear> ?ecproject_endingyear.
+?ecsubjectarea <http://unics.cloud/ontology#extendedName> ?ecsubjectarea_extendedname.
+FILTER (contains(lcase(str(?ecsubjectarea_extendedname)), "climate change"))
+}

@@ -1,0 +1,9 @@
+# countries with no projects
+
+SELECT DISTINCT ?country WHERE {
+?country a <http://unics.cloud/ontology#Country>.
+FILTER NOT EXISTS {
+        ?ecparticipantreified <http://unics.cloud/ontology#ecProject> ?ecproject.
+
+        ?ecparticipantreified <http://unics.cloud/ontology#country> ?country.
+}}

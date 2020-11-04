@@ -1,0 +1,8 @@
+# projects in mass spectrometry
+
+SELECT DISTINCT ?ecproject_title ?ercproject_ecproject ?ercproject_ecproject_title WHERE {
+?ercproject_ecproject a <http://unics.cloud/ontology#ERC-Project>.
+?ercproject_ecproject <http://unics.cloud/ontology#title> ?ercproject_ecproject_title.
+?ercproject_ecproject <http://unics.cloud/ontology#title> ?ecproject_title.
+FILTER (contains(lcase(str(?ecproject_title)), "mass spectrometry"))
+}

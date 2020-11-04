@@ -1,0 +1,8 @@
+# projects with a cost higher than 1 million
+
+SELECT DISTINCT ?ecproject ?ecproject_title ?ecproject_totalcost WHERE {
+?ecproject <http://unics.cloud/ontology#totalCost> ?ecproject_totalcost.
+
+FILTER(?ecproject_totalcost > 1000000)
+
+}

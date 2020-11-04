@@ -1,0 +1,16 @@
+# titles of erc projects with coordinators from piemonte
+
+SELECT DISTINCT ?ecparticipantreified ?ecparticipantreified_extendedname ?ercproject ?ercproject_title ?nuts2 ?nuts2_extendedname ?roleinproject ?roleinproject_extendedname ?roleinproject_shortname WHERE {
+?ecparticipantreified <http://unics.cloud/ontology#roleInProject> ?roleinproject.
+?ecparticipantreified a <http://unics.cloud/ontology#EC-Participant-Reified>.
+?ecparticipantreified <http://unics.cloud/ontology#extendedName> ?ecparticipantreified_extendedname.
+?ecparticipantreified <http://unics.cloud/ontology#ecProject> ?ercproject.
+?ercproject a <http://unics.cloud/ontology#ERC-Project>.
+?ecparticipantreified <http://unics.cloud/ontology#nuts2> ?nuts2.
+?ercproject <http://unics.cloud/ontology#title> ?ercproject_title.
+?roleinproject <http://unics.cloud/ontology#extendedName> ?roleinproject_extendedname.
+?nuts2 <http://unics.cloud/ontology#extendedName> ?nuts2_extendedname.
+?roleinproject <http://unics.cloud/ontology#shortName> ?roleinproject_shortname.
+FILTER (contains(lcase(str(?nuts2_extendedname)), "piemonte"))
+FILTER (contains(lcase(str(?roleinproject_shortname)), "coordinator"))
+}
