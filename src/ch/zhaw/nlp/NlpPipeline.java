@@ -86,7 +86,13 @@ public class NlpPipeline {
             			lastToken.setText(lastToken.getText() + "%");
             			continue;
             		}
-            		if(token.originalText().length() > 1)
+            if(token.originalText().length() == 1 &&
+					(token.originalText().equals(">") 
+					|| token.originalText().equals("<")
+					|| token.originalText().equals("="))) {
+				tokenList.addToken(new Token(++index, token));
+			}
+			if(token.originalText().length() > 1)
             			tokenList.addToken(new Token(++index, token));
             }
         }

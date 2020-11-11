@@ -46,16 +46,13 @@ public class BusinessObject implements HasTables, HasScore {
 	
 	public Double pageRank = null;
 	
+	public String operator = null; // > < >= <=
 
-	public BusinessObject(String key, String value, String srcLink, boolean negated) {
-		this(QueryGraph.URI_BUSINESSOBJECT_PREFIX + (++counter), key, value, srcLink, null, null, negated);
-	}
-
-	public BusinessObject(String key, String value, String srcLink, String className, String propName, Double pageRank, boolean negated) {
-		this(QueryGraph.URI_BUSINESSOBJECT_PREFIX + (++counter), key, value, srcLink, className, propName, pageRank, negated);
+	public BusinessObject(String key, String value, String srcLink, String className, String propName, Double pageRank, boolean negated, String operator) {
+		this(QueryGraph.URI_BUSINESSOBJECT_PREFIX + (++counter), key, value, srcLink, className, propName, pageRank, negated, operator);
 	}
 	
-	private BusinessObject(String uri, String key, String value, String srcLink, String className, String propName, Double pageRank, boolean negated) {
+	private BusinessObject(String uri, String key, String value, String srcLink, String className, String propName, Double pageRank, boolean negated, String operator) {
 		if (uri == null) {
 			throw new RuntimeException("uri must not be null!");
 		}
@@ -78,6 +75,7 @@ public class BusinessObject implements HasTables, HasScore {
 		this.className = className;
 		this.propName = propName;
 		this.pageRank = pageRank;
+		this.operator = operator;
 	}
 
 	// -------------------------------------------------------------------- uri
@@ -175,6 +173,7 @@ public class BusinessObject implements HasTables, HasScore {
 		boNode.addLiteral(QueryGraph.CLASS_NAME, className);
 		boNode.addLiteral(QueryGraph.PROP_NAME, propName);
 		boNode.addLiteral(QueryGraph.PAGE_RANK, pageRank.toString());
+		boNode.addLiteral(QueryGraph.OPERATOR, operator);
 		if (score >= 0.0) {
 			boNode.addLiteral(QueryGraph.EDGE_HASRANKING, String.valueOf(score));
 		}
@@ -193,7 +192,8 @@ public class BusinessObject implements HasTables, HasScore {
 		String className = boNode.getLiteralValue(QueryGraph.CLASS_NAME);
 		String propName = boNode.getLiteralValue(QueryGraph.PROP_NAME);		
 		Double pageRank = Double.parseDouble(boNode.getLiteralValue(QueryGraph.PAGE_RANK));
-		BusinessObject bo = new BusinessObject(uri, key, value, srcLink, className, propName, pageRank, false);
+		String operator = boNode.getLiteralValue(QueryGraph.OPERATOR);
+		BusinessObject bo = new BusinessObject(uri, key, value, srcLink, className, propName, pageRank, false, operator);
 		String scoreText = boNode.getLiteralValue(QueryGraph.EDGE_HASRANKING);
 		boolean negated = boNode.getLiteralValue(QueryGraph.EDGE_IS_NEGATED).equals("true") ? true : false;
 		bo.negated = negated;

@@ -316,6 +316,13 @@ public class FederatedSummaryGraphPage extends AbstractPage {
 
 					Term term = new Term(TermType.RDF_MATCH, kw, uri, TermOrigin.SPARQL, SPARQLUtilsLocal.getLiteralFromString(resType) + ": "+ found + " (\""+ label + "\")", pageRank);
 					term.label = label;
+					if(bo.operator != null && !(bo.operator.isEmpty()))
+						try {
+							term.setOperator(bo.operator);
+						} catch (Exception e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 					term.setClassProp(resType, propThatMatched);
 					if(resType != null && (!resType.contains("#Class")) && (!resType.contains("http://www.w3.org/2002/07/owl")) &&(!resType.contains("http://www.w3.org/1999/02/22-rdf-syntax-ns")) && (propThatMatched != null) && (!propThatMatched.isEmpty()) && (!found.equals("uri")) && (!propThatMatched.contains("#equivalentClass"))) {
 						term.setFilter();
@@ -751,7 +758,7 @@ public class FederatedSummaryGraphPage extends AbstractPage {
 					}
 					for(Term numericalTerm : numericalTerms) {
 						if(numericalTerm.value.equals(term.value)) {
-							sparqlFilters.add("NUMERICAL" + "###" + numericalTerm.value + "###" + numericalTerm.key);
+							sparqlFilters.add("NUMERICAL" + "###" + numericalTerm.value + "###" + numericalTerm.operator + "###" + numericalTerm.key);
 						}
 					}
 
@@ -1528,7 +1535,7 @@ public class FederatedSummaryGraphPage extends AbstractPage {
 						}
 						for(Term numericalTerm : numericalTerms) {
 							if(numericalTerm.value.equals(term.value)) {
-								sparqlFilters.add("NUMERICAL" + "###" + numericalTerm.value + "###" + numericalTerm.key);
+								sparqlFilters.add("NUMERICAL" + "###" + numericalTerm.value + "###" + numericalTerm.operator  + "###" + numericalTerm.key);
 							}       
 						}
 					}

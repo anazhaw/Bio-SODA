@@ -46,12 +46,14 @@ import ch.ethz.semdwhsearch.prototyp1.metadata.MetadataSingleton;
 class Filter{
 	String rdfClass;
 	String rdfProperty;
+	String operator;
 	String kw;
 	String varName;
 
-	public Filter(String cls, String prop, String kw, String varName) {
+	public Filter(String cls, String prop, String operator, String kw, String varName) {
 		this.rdfClass = cls;
 		this.rdfProperty = prop;
+		this.operator = operator;
 		this.kw = kw;
 		this.varName = varName;
 	}

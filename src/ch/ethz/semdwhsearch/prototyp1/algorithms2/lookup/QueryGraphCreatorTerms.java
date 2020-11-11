@@ -106,7 +106,7 @@ public class QueryGraphCreatorTerms {
 
                     // add BO or VAL
                     if (term.type == TermType.RDF_MATCH) {
-                        queryGraph.addBusinessObject(term.key, term.value, term.originName, term.filteredClass, term.filteredProp, term.pageRank, term.isNegated());
+                        queryGraph.addBusinessObject(term.key, term.value, term.originName, term.filteredClass, term.filteredProp, term.pageRank, term.isNegated(), term.operator);
                     } else if (term.type == TermType.VALUE) {
                         queryGraph.addValue(term.key, term.value, uri);
                     } else {

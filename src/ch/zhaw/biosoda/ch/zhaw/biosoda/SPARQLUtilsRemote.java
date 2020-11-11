@@ -34,6 +34,7 @@ import org.apache.jena.vocabulary.XSD;
 import org.jgrapht.alg.interfaces.SpanningTreeAlgorithm.SpanningTree;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.ontology.OntProperty;
@@ -969,11 +970,11 @@ public class SPARQLUtilsRemote {
 		HashSet<Filter> filterTriples = new HashSet<Filter>();
 		for(String key: filters) {
 			String[] classPropertyValue = key.split("###");
-			if(classPropertyValue.length != 3)
+			if(classPropertyValue.length != 4)
 				continue;
 			if(classPropertyValue[0].equals("NUMERICAL")) {
 				String filteredNumericalVarName = "?" + SPARQLUtilsRemote.getLiteralFromString(classPropertyValue[1].toLowerCase());
-				Filter rdfFilter = new Filter(classPropertyValue[0], classPropertyValue[1], classPropertyValue[2], filteredNumericalVarName);
+				Filter rdfFilter = new Filter(classPropertyValue[0], classPropertyValue[1], classPropertyValue[2], classPropertyValue[3], filteredNumericalVarName);
 				filterTriples.add(rdfFilter);
 				selectVars.add(filteredNumericalVarName);
 				continue;
@@ -994,7 +995,7 @@ public class SPARQLUtilsRemote {
 			varNameToClassMap.put("?" + filteredClass, classPropertyValue[0]);
 			varNameToClassMap.put(filteredVarName, classPropertyValue[1]);
 
-			Filter rdfFilter = new Filter(classPropertyValue[0], classPropertyValue[1], classPropertyValue[2], filteredVarName);
+			Filter rdfFilter = new Filter(classPropertyValue[0], classPropertyValue[1], classPropertyValue[2], classPropertyValue[3], filteredVarName);
 			filterTriples.add(rdfFilter);
 			selectVars.add("?"+SPARQLUtilsRemote.getLiteralFromString(classPropertyValue[0].toLowerCase()));
 			selectVars.add(filteredVarName);
@@ -1244,7 +1245,7 @@ public class SPARQLUtilsRemote {
 					}
 					if(varDst==null){
 						logger.info(" RANGE NOT FOUND FOR "+varSrc);
-						HashSet<String> rangeClasses = SPARQLUtilsRemote.getRangeOfPropertyRemote(prop, Constants.REMOTE_REPO); 
+						HashSet<String> rangeClasses = SPARQLUtilsRemote.getRangeOfPropertyFromSummaryGraph(prop, g);//SPARQLUtilsRemote.getRangeOfPropertyRemote(prop, Constants.REMOTE_REPO); 
 						if(rangeClasses.size() != 0){
 							varDst = "?" + SPARQLUtilsRemote.getLiteralFromString(g.getMostSpecificClass(new ArrayList<String>(rangeClasses)).toLowerCase());
 							rangeClass = g.getMostSpecificClass(new ArrayList<String>(rangeClasses));
@@ -1476,7 +1477,11 @@ public class SPARQLUtilsRemote {
 				}
 				for(Filter f: filterTriples) {
 					if(f.rdfClass.equals("NUMERICAL")){
-						result += " FILTER (str(" + f.varName + ") " + " = " + "\"" + f.kw.toLowerCase() + "\"" + ")" + "\n";
+						if(f.operator.equals("="))
+							result += " FILTER (str(" + f.varName + ") " + " = " + "\"" + f.kw.toLowerCase() + "\"" + ")" + "\n";
+						else {
+							result += " FILTER (" + f.varName + " " + f.operator + " " + f.kw.toLowerCase() + " " + ")" + "\n";
+						}
 						continue;
 					}
 					if(!f.rdfProperty.equals("uri")) {

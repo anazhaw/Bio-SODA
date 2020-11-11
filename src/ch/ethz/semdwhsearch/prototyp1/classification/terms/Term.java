@@ -46,6 +46,8 @@ public class Term {
 	public boolean isNegated = false;
 
 	public String label = "";
+	
+	public String operator = "";
 
 	public Term(TermType type, String value, TermOrigin origin, String originName) {
 		this(type, value, value, origin, originName, Constants.DEFAULT_PAGERANK);
@@ -93,6 +95,14 @@ public class Term {
 	
 	public void setFilter() {
 		this.matchType = MatchType.FILTER;
+	}
+	
+	public void setOperator(String operator) throws Exception {
+		if(!(operator.equals("=") || operator.equals("<") || operator.equals(">") || operator.equals("<=") || operator.equals(">="))) {
+			throw new Exception("Operator "+ operator + " not supported!");
+		}
+		else
+			this.operator = operator;
 	}
 
 	public void setExactMatch() {
@@ -149,7 +159,8 @@ public class Term {
 
 	@Override
 	public String toString() {
-		return "Key: " + key + " value: "+ value +  " originName: " + originName + " page rank " + pageRank + " filtered class: "+ filteredClass + " prop: "+ filteredProp + " is negated: "+ isNegated + " is filter " + matchType.equals(MatchType.FILTER);
+		return "Key: " + key + " value: "+ value +  " originName: " + originName + " page rank " + pageRank + " filtered class: "+ filteredClass + " prop: "+ filteredProp + " is negated: "+ isNegated + " is filter " + matchType.equals(MatchType.FILTER)
+		+ " operator "+ operator;
 	}
 	
 	public static String getPropertyThatMatchesRemote(String endpoint, String uri, String keyword) {

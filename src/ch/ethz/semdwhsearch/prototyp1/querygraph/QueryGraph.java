@@ -112,6 +112,8 @@ public class QueryGraph {
 	public static final String PROP_NAME = "prop";
 	
 	public static final String PAGE_RANK = "pageRank";
+	
+	public static final String OPERATOR = "operator";
 
 	// ---------------------------------------------------------------- members
 
@@ -197,20 +199,8 @@ public class QueryGraph {
 
 	// ------------------------------------------------------- business objects
 
-	public BusinessObject addBusinessObject(String key, String value, String srcLink) {
-		BusinessObject bo = new BusinessObject(key, value, srcLink, false);
-		businessObjects.add(bo);
-		return bo;
-	}
-	
-	public BusinessObject addBusinessObject(String key, String value, String srcLink, String className, String propName, Double pageRank, boolean negated) {
-		BusinessObject bo = new BusinessObject(key, value, srcLink, className, propName, pageRank, negated);
-		businessObjects.add(bo);
-		return bo;
-	}
-
-	public BusinessObject addBusinessObject(String key, String value, String srcLink, boolean negated) {
-		BusinessObject bo = new BusinessObject(key, value, srcLink, negated);
+	public BusinessObject addBusinessObject(String key, String value, String srcLink, String className, String propName, Double pageRank, boolean negated, String operator) {
+		BusinessObject bo = new BusinessObject(key, value, srcLink, className, propName, pageRank, negated, operator);
 		businessObjects.add(bo);
 		return bo;
 	}

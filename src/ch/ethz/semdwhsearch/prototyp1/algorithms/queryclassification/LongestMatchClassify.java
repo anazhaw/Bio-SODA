@@ -10,6 +10,8 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import ch.zhaw.biosoda.FederatedSummaryGraph;
+import ch.ethz.semdwhsearch.prototyp1.metadata.MetadataSingleton;
 import ch.ethz.semdwhsearch.prototyp1.constants.Constants;
 import ch.ethz.semdwhsearch.prototyp1.classification.Classification;
 import ch.ethz.semdwhsearch.prototyp1.classification.Match;
@@ -166,6 +168,7 @@ public class LongestMatchClassify {
 		String number = null;
 
 		for(Token tok : tokens.getTokens())
+			//identify numbers in the tokens, note that there could be MULTIPLE now, make array
 			if(tok.getText().matches("-?\\d+(\\.\\d+)?"))
 				number = tok.getText();
 
@@ -207,6 +210,7 @@ public class LongestMatchClassify {
 					termsDict = classification.lookup(keyTokens);
 				}
 
+				FederatedSummaryGraph g = MetadataSingleton.getInstance().getMetadata().getModelInfo(Constants.MODEL_NAME).getFederatedSummaryGraph();
 				if (termsDict.size() > 0) {
 					// left side
 					ArrayList<Match> left = classifyBreadthFirst(tokens, from, pos);
@@ -233,7 +237,7 @@ public class LongestMatchClassify {
 								continue;
 							numericalProp = null;
 							if(term.filteredClass != null && (!term.filteredClass.equals("null")) && term.filteredClass.contains("Property")){
-								HashSet<String> rangeClasses = SPARQLUtilsRemote.getRangeOfPropertyRemote("<"+term.originName+">", Constants.REMOTE_REPO);
+								HashSet<String> rangeClasses = SPARQLUtilsRemote.getRangeOfPropertyFromSummaryGraph("<"+term.originName+">", g);//getRangeOfPropertyRemote("<"+term.originName+">", Constants.REMOTE_REPO);
 								for(String rangeClass : rangeClasses){
 									if(rangeClass.contains("integer") || rangeClass.contains("decimal") || rangeClass.contains("double")) {
 										numericalProp = term;
@@ -243,16 +247,31 @@ public class LongestMatchClassify {
 								if(rangeClasses.size() == 0)
 									numericalProp = term;
 								boolean matchingTermFound = false;
+								String operator = null;
 								if(numericalProp != null)
 									for(int i = pos + numWords ; i < tokens.size(); i++) {
 										Token tok = tokens.getToken(i);
 										if(matchingTermFound)
 											break;
+										if(tok.getText().matches("[=><]{1,2}")) {
+												operator = tok.getText();
+												continue;
+										}
 										if(tok.getText().matches("-?\\d+(\\.\\d+)?")) {
 											number = tok.getText();
-											logger.info("Adding numerical match on " + numericalProp + " number: "+ number);
+											logger.info("Adding numerical match on " + numericalProp + " number: "+ number + " operator: "+ operator);
+											
 											numericalMatch = new Term(numericalProp.type, number, number, numericalProp.origin, numericalProp.originName, numericalProp.pageRank);
 											numericalMatch.setClassProp(numericalProp.filteredClass, numericalProp.filteredProp);
+											if(operator != null) {
+												try {
+													numericalMatch.setOperator(operator);
+													logger.info("Adding operator "+ operator + " on " + numericalProp);
+												} catch (Exception e) {
+													// TODO Auto-generated catch block
+													e.printStackTrace();
+												}
+											}
 											numericalTerms.add(numericalMatch);
 											matchingTermFound = true;
 											break;
