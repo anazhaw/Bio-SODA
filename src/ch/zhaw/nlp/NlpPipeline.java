@@ -85,15 +85,31 @@ public class NlpPipeline {
             			Token lastToken = tokenList.getToken(tokenList.size() - 1);
             			lastToken.setText(lastToken.getText() + "%");
             			continue;
-            		}
-            if(token.originalText().length() == 1 &&
-					(token.originalText().equals(">") 
-					|| token.originalText().equals("<")
-					|| token.originalText().equals("="))) {
-				tokenList.addToken(new Token(++index, token));
-			}
-			if(token.originalText().length() > 1)
-            			tokenList.addToken(new Token(++index, token));
+            	}
+			
+            if(token.originalText().length() == 1) {
+				if(token.originalText().equals(">") 
+				|| token.originalText().equals("<")) {
+					CoreLabel nextToken = sentence.get(CoreAnnotations.TokensAnnotation.class).get(index + 1);
+					if(nextToken.originalText().equals("=")) {	
+            				token.setOriginalText(token.originalText() + "=");
+            				token.setLemma(token.lemma() + "=");
+            				token.setValue(token.value() + "=");
+            			}
+				}
+				if(token.originalText().equals("=")) {
+					if(index > 0) {
+						CoreLabel prevToken = sentence.get(CoreAnnotations.TokensAnnotation.class).get(index - 1);
+						if(prevToken.originalText().contains("<") || prevToken.originalText().contains(">")) { //part of a <= or >= operator
+							++index;
+							continue;
+						}
+					}
+				}
+            }
+            
+            	tokenList.addToken(new Token(++index, token));
+            
             }
         }
         return tokenList;
