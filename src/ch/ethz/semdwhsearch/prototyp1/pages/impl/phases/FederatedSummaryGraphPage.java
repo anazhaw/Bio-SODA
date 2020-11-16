@@ -671,7 +671,7 @@ public class FederatedSummaryGraphPage extends AbstractPage {
 								ranges = SPARQLUtilsRemote.getRangeOfPropertyRemote(prop, endpoint);
 								// assumption: if range null, then it might be a string property
 								if(ranges == null || ranges.size() == 0) {
-									ranges.add("<http://www.w3.org/2001/XMLSchema#string>");
+									ranges.add("<http://www.w3.org/2001/XMLSchema#string" + Math.random() + ">");
 									//here, all numerical terms that contains this property should get the domain of this as class
 								}
 								rangesMap.put(prop, ranges);
