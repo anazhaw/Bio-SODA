@@ -606,12 +606,40 @@ public class SPARQLUtilsRemote {
 		}
 		return results;
 	}
-
+	
+	public static HashSet<String> getSubclassesFromLocal(OntModel model, String classURI) {
+		final String queryString = prolog1 + "\n" + prolog2 + "\n"+ prolog3 + "\n"+ prolog4 + "\n" +
+				"SELECT ?type WHERE { <" + classURI + ">  rdfs:subClassOf+ ?type . }";
+		final Query query = QueryFactory.create(queryString);
+		QueryExecution qexec = QueryExecutionFactory.create(query, model);
+		// Print with line numbers
+		query.serialize(new IndentedWriter(System.out, true));
+		
+		HashSet<String> results = new HashSet<String>();
+		// Create a single execution of this query, apply to a model
+		// which is wrapped up as a Dataset
+		try {	                
+			// Assumption: it’s a SELECT query.
+			final ResultSet rs = qexec.execSelect();
+			// The order of results is undefined.
+			for (; rs.hasNext();) {
+				final QuerySolution rb = rs.nextSolution();
+				results.add(rb.get("type").toString());
+			}
+		} finally {
+			// QueryExecution objects should be closed to free any system
+			// resources
+			qexec.close();
+		}
+		
+		return results;
+	}
+	
 	public static HashSet<String> getDomainOfPropertyFromLocalOntology(String prop){
 		prop = prop.replace("<","").replace(">","");
 		HashSet<String> results = new HashSet<String>();
 		OntModel model = ModelFactory.createOntologyModel( OntModelSpec.OWL_MEM );
-		model.read( MetadataSingleton.getInstance().getMetadata().getDataDirPath() );
+        model.read( MetadataSingleton.getInstance().getMetadata().getDataDirPath() + "onto_dr-16_manual_merged-with-mpboot_skyserver-merged.owl");
 		OntProperty locatedIn = model.getOntProperty( prop );
 		ExtendedIterator<? extends OntResource> domains = locatedIn.listDomain();
 		while ( domains.hasNext() ) { 
@@ -629,18 +657,33 @@ public class SPARQLUtilsRemote {
 				while ( unionClasses.hasNext() ) {
 					String unionClass = unionClasses.next().toString();
 					results.add("<"+unionClass+">");
+					//also add all of its subclasses
+					HashSet<String> subClasses = getSubclassesFromLocal(model, unionClass);
+                    for (String subclass : subClasses) {
+                            results.add("<"+subclass + ">");
+                    }
 				}}
 			else {
 				try {
 					enm = dom.asClass().asEnumeratedClass();
 				} catch (Exception e)
 				{       results.add("<"+domain+">");
+					//also add all of its subclasses
+					HashSet<String> subClasses = getSubclassesFromLocal(model, domain);
+					for (String subclass : subClasses) {
+                        results.add("<"+subclass + ">");
+					}
 				}
 				if(enm != null){
 					ExtendedIterator<? extends OntResource> enums = enm.listOneOf();
 					while ( enums.hasNext() ) {
 						String enumClass = enums.next().toString();
 						results.add("<"+enumClass+">");
+						//also add all of its subclasses
+						HashSet<String> subClasses = getSubclassesFromLocal(model, enumClass);
+						for (String subclass : subClasses) {
+	                        results.add("<"+subclass + ">");
+						}
 					}}
 
 			}
@@ -671,22 +714,38 @@ public class SPARQLUtilsRemote {
 				while ( unionClasses.hasNext() ) {
 					String unionClass = unionClasses.next().toString();
 					results.add("<"+unionClass+">");
+					//also add all of its subclasses
+					HashSet<String> subClasses = getSubclassesFromLocal(model, unionClass);
+                    for (String subclass : subClasses) {
+                            results.add("<"+subclass + ">");
+                    }
 				}}
 			else{
 				try {
 					enm = ran.asClass().asEnumeratedClass();
 				} catch (Exception e)
 				{       results.add("<"+range+">");
+						//also add all of its subclasses
+						HashSet<String> subClasses = getSubclassesFromLocal(model, range);
+						for (String subclass : subClasses) {
+							results.add("<"+subclass + ">");
+						}
 				}
 				if(enm != null){
 					ExtendedIterator<? extends OntResource> enums = enm.listOneOf();
 					while ( enums.hasNext() ) {
 						String enumClass = enums.next().toString();
 						results.add("<"+enumClass+">");
+						//also add all of its subclasses
+						HashSet<String> subClasses = getSubclassesFromLocal(model, enumClass);
+						for (String subclass : subClasses) {
+							results.add("<"+subclass + ">");
+						}
 					}}
 
 			}
 		} 
+        
 		return results;
 	}
 
