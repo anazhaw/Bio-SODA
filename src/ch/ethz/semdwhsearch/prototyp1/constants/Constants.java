@@ -25,17 +25,17 @@ public class Constants {
 
 	public static final int MAX_MATCHES_COUNT = 5;
 
-	public static final int MAX_RESULT_COUNT = 5;
+	public static final int MAX_RESULT_COUNT = 10;
 
-	public static final int MAX_TERM_COMBINATIONS = 300;
+	public static final int MAX_TERM_COMBINATIONS = 1000;
 
 	public static final int MAX_HOPS_SHORTEST_PATH = 4;
 
-	public static final int MAX_ALTERNATIVES_COUNT = 10;
+	public static final int MAX_ALTERNATIVES_COUNT = 100;
 
 	public static final int MAX_LOOKUP_COUNT = 1000;
 
-	public static final int MAX_SHORTEST_PATHS_ALTERNATIVES_COUNT = 2;
+	public static final int MAX_SHORTEST_PATHS_ALTERNATIVES_COUNT = 5;
 
 	public static final int RANKED_RESULT_COUNT = 10;
 
