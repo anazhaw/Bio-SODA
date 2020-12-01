@@ -29,7 +29,7 @@ import ch.ethz.semdwhsearch.prototyp1.localization.Dictionaries;
 import ch.ethz.semdwhsearch.prototyp1.localization.Dictionary;
 import ch.ethz.semdwhsearch.prototyp1.pages.Page;
 import ch.ethz.semdwhsearch.prototyp1.pages.impl.ConfigPage;
-import ch.ethz.semdwhsearch.prototyp1.pages.impl.phases.DemoPageQald4;
+import ch.ethz.semdwhsearch.prototyp1.pages.impl.phases.DemoPageSDSS;
 import ch.ethz.semdwhsearch.prototyp1.pages.impl.phases.FederatedSummaryGraphPage;
 import ch.ethz.semdwhsearch.prototyp1.tools.ServletResponseTools;
 import ch.ethz.semdwhsearch.prototyp1.tools.request.GetRequest;
@@ -116,7 +116,7 @@ public class SemDwhSearchServlet extends HttpServlet {
 		} else if (pageStr.equals(PageNames.PN_SGRAPH_FEDERATED)) {
 			page = new FederatedSummaryGraphPage();
 		} else if (pageStr.equals(PageNames.PN_SGRAPH_DEMO)) {
-			page = new DemoPageQald4();
+			page = new DemoPageSDSS();
 		}
 		if (data == null) {
 			page = new ConfigPage();
