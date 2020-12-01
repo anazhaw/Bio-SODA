@@ -110,6 +110,11 @@ public class DemoPageSDSS extends AbstractPage {
 
                 html.append("</tr>\n");
                 html.append("</table>\n");
+                
+                html.append("<ul>\n");
+                html.append("<li>To start, click on one of the above questions (expected response time generally under 10 seconds)</li>");
+                html.append("<li>...or use the input field above to simply type in your question and then hit the button \"Go\"</li>");
+                html.append("</ul>\n");
 		
 		logger.info("Final time: "+ new Timestamp(System.currentTimeMillis()));
 
