@@ -21,7 +21,7 @@ public class Constants {
 
 	public static final int DISPLAY_COUNT = 100;
 
-	public static final int MAX_FIELD_LENGTH = 255;
+	public static final int MAX_FIELD_LENGTH = 1055;
 
 	public static final int MAX_MATCHES_COUNT = 5;
 
@@ -49,13 +49,13 @@ public class Constants {
 
 	public static final boolean ADD_DESCRIPTIONS = false;
 
-	public static boolean usePageRanks = true;
+	public static boolean usePageRanks = false;
 
 	public static final double DEFAULT_PAGERANK = 0.1;  //0.15;
 
 	public static final double PROPERTY_PAGERANK = 70;
 
-	public static boolean indexURIFragments = false;
+	public static boolean indexURIFragments = true;
 
 	public static final String PUNCTUATION_FOR_SPLITS = "[-_]";
 
@@ -76,15 +76,15 @@ public class Constants {
 	public static final String FN_AUTO_INIT = "";
 	public static final String FN_METADATA_MAPPING = "metadata-mapping.txt";
 	public static final boolean ONDISK_MODEL = false;
-	public static final boolean REMOTE_INDEXING = true;
-	public static final int SPARQL_INDEXING_BATCH_SIZE = 1000;
+	public static final boolean REMOTE_INDEXING = false;
+	public static final int SPARQL_INDEXING_BATCH_SIZE = 20000;
 	public static final String TBD_DATA_DIR = "";
 
 	public static final String MODEL_NAME = "sample";
 
 	public static final boolean USE_REMOTE = true;
-	public static final String REMOTE_REPO = "http://biosoda.expasy.org:7200/repositories/CompanyEmployeeSampleData";
-	public static final String PAGERANK_REPO = "http://biosoda.expasy.org:7200/repositories/sample_page_ranks";
+	public static final String REMOTE_REPO = ""; //put URL to SPARQL endpoint here! 
+	public static final String PAGERANK_REPO = "";
 
 	// -------------------------------------------------------- parameter names
 
