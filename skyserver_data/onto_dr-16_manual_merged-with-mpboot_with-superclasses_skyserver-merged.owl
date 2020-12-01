@@ -1,0 +1,1425 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/skyserver/"
+     xml:base="http://www.semanticweb.org/skyserver/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:obda="https://w3id.org/obda/vocabulary#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/skyserver/"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/hasPhotometry -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/skyserver/hasPhotometry"/>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/hasSpectroscopy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/skyserver/hasSpectroscopy"/>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/galspecline#hasSpectroscopy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/skyserver/galspecline#hasSpectroscopy">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/hasSpectroscopy"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Galspecline"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/skyserver/Spectroscopy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/neighbors#hasPhotometry -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/skyserver/neighbors#hasPhotometry">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/hasPhotometry"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Neighbors"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/photometry#hasSpectroscopy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/skyserver/photometry#hasSpectroscopy">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/hasSpectroscopy"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/skyserver/Spectroscopy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/spectroscopic#hasPhotometry -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/skyserver/spectroscopic#hasPhotometry">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/hasPhotometry"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Spectroscopy"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/spplines#hasSpectroscopy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/skyserver/spplines#hasSpectroscopy">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/hasSpectroscopy"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Spplines"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/skyserver/Spectroscopy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/compositeModelMagnitude_g -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/compositeModelMagnitude_g">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_g"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/composite_modelmagnitude_error -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/composite_modelmagnitude_error"/>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/declination -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/declination">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/skyserver/Photometry"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/skyserver/Spectroscopy"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/devmagnitude_g -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/devmagnitude_g">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_g"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/devmagnitude_i -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/devmagnitude_i">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_i"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/devmagnitude_r -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/devmagnitude_r">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_r"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/devmagnitude_u -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/devmagnitude_u">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_u"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/devmagnitude_z -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/devmagnitude_z">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_z"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/expmagnitude_error -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/expmagnitude_error"/>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/expmagnitude_g -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/expmagnitude_g">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_g"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/expmagnitude_i -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/expmagnitude_i">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_i"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/expmagnitude_r -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/expmagnitude_r">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_r"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/expmagnitude_u -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/expmagnitude_u">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_u"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/expmagnitude_z -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/expmagnitude_z">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_z"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/extinction -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/extinction">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/extinction_i -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/extinction_i">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/extinction"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/extinction_r -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/extinction_r">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/extinction"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/fibermagnitude_g -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/fibermagnitude_g">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_g"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/fibermagnitude_i -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/fibermagnitude_i">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_i"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/fibermagnitude_r -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/fibermagnitude_r">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_r"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/fibermagnitude_u -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/fibermagnitude_u">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_u"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/fibermagnitude_z -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/fibermagnitude_z">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_z"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/hasPhotoWarning -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/hasPhotoWarning">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/hasSpectroWarning -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/hasSpectroWarning">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Spectroscopy"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/isPrimary -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/isPrimary">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/magnitude_g -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/magnitude_g">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/magnitude_i -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/magnitude_i">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/magnitude_r -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/magnitude_r">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/magnitude_u -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/magnitude_u">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/magnitude_z -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/magnitude_z">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/modelmagnitude_corrrected_for_extinction -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/modelmagnitude_corrrected_for_extinction"/>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/modelmagnitude_error -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/modelmagnitude_error"/>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/modelmagnitude_g -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/modelmagnitude_g">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_g"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/modelmagnitude_i -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/modelmagnitude_i">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_i"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/modelmagnitude_r -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/modelmagnitude_r">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_r"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/modelmagnitude_u -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/modelmagnitude_u">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_u"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/modelmagnitude_z -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/modelmagnitude_z">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_z"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/petromagnitude_g -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/petromagnitude_g">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_g"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/petromagnitude_i -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/petromagnitude_i">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_i"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/petromagnitude_r -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/petromagnitude_r">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_r"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/petromagnitude_u -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/petromagnitude_u">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_u"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/petromagnitude_z -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/petromagnitude_z">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_z"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/psfmagnitude_error -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/psfmagnitude_error"/>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/psfmagnitude_g -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/psfmagnitude_g">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_g"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/psfmagnitude_i -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/psfmagnitude_i">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_i"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/psfmagnitude_r -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/psfmagnitude_r">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_r"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/psfmagnitude_u -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/psfmagnitude_u">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_u"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/psfmagnitude_z -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/psfmagnitude_z">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/magnitude_z"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/redshift -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/redshift">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Spectroscopy"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/redshift_err -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/redshift_err">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Spectroscopy"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/right_ascension -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/right_ascension">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/skyserver/Photometry"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/skyserver/Spectroscopy"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/spectroscopyClass -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/spectroscopyClass">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Spectroscopy"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/time_of_observation -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/time_of_observation"/>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Galspecline#specObjID -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Galspecline#specObjID">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Galspecline"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Neighbors#center_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Neighbors#center_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Neighbors"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Neighbors#center_type -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Neighbors#center_type">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Neighbors"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Neighbors#distance_center-neighbor -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Neighbors#distance_center-neighbor">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Neighbors"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Neighbors#neighbor_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Neighbors#neighbor_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Neighbors"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Neighbors#neighbor_mode -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Neighbors#neighbor_mode">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Neighbors"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Neighbors#neighbor_type -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Neighbors#neighbor_type">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Neighbors"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#camera_column -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#camera_column">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#clean_photometry_flag -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#clean_photometry_flag">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#column_center_position -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#column_center_position">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#column_velocity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#column_velocity">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#composite_modelmagnitude_error_g -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#composite_modelmagnitude_error_g">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/composite_modelmagnitude_error"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#composite_modelmagnitude_error_i -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#composite_modelmagnitude_error_i">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/composite_modelmagnitude_error"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#composite_modelmagnitude_error_r -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#composite_modelmagnitude_error_r">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/composite_modelmagnitude_error"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#composite_modelmagnitude_error_u -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#composite_modelmagnitude_error_u">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/composite_modelmagnitude_error"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#composite_modelmagnitude_error_z -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#composite_modelmagnitude_error_z">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/composite_modelmagnitude_error"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#expmagnitude_error_g -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#expmagnitude_error_g">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/expmagnitude_error"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#expmagnitude_error_i -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#expmagnitude_error_i">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/expmagnitude_error"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#expmagnitude_error_r -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#expmagnitude_error_r">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/expmagnitude_error"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#expmagnitude_error_u -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#expmagnitude_error_u">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/expmagnitude_error"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#expmagnitude_error_z -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#expmagnitude_error_z">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/expmagnitude_error"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#field_number -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#field_number">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#galactic_latitude -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#galactic_latitude">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#galactic_longitude -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#galactic_longitude">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#mode_of_photo_observation -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#mode_of_photo_observation">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#modelmagnitude_corrected_for_extinction_i -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#modelmagnitude_corrected_for_extinction_i">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/modelmagnitude_corrrected_for_extinction"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#modelmagnitude_corrected_for_extinction_r -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#modelmagnitude_corrected_for_extinction_r">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/modelmagnitude_corrrected_for_extinction"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#modelmagnitude_corrected_for_extinction_u -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#modelmagnitude_corrected_for_extinction_u">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/modelmagnitude_corrrected_for_extinction"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#modelmagnitude_corrected_for_extinction_z -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#modelmagnitude_corrected_for_extinction_z">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/modelmagnitude_corrrected_for_extinction"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#modelmagnitude_error_g -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#modelmagnitude_error_g">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/modelmagnitude_error"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#modelmagnitude_error_i -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#modelmagnitude_error_i">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/modelmagnitude_error"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#modelmagnitude_error_r -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#modelmagnitude_error_r">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/modelmagnitude_error"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#modelmagnitude_error_u -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#modelmagnitude_error_u">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/modelmagnitude_error"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#modelmagnitude_error_z -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#modelmagnitude_error_z">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/modelmagnitude_error"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#modified_julien_date -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#modified_julien_date">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#object_type_classification -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#object_type_classification">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#petrocian_radius -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#petrocian_radius">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#photo_object_attribute_flags -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#photo_object_attribute_flags">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#photometry_object_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#photometry_object_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#psfmagnitude_error_g -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#psfmagnitude_error_g">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/psfmagnitude_error"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#psfmagnitude_error_i -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#psfmagnitude_error_i">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/psfmagnitude_error"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#psfmagnitude_error_r -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#psfmagnitude_error_r">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/psfmagnitude_error"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#psfmagnitude_error_z -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#psfmagnitude_error_z">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/psfmagnitude_error"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#rerun_number -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#rerun_number">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#row_center_position -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#row_center_position">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#row_velocity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#row_velocity">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#run_number -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#run_number">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#time_of_observation_g -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#time_of_observation_g">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/time_of_observation"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#time_of_observation_i -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#time_of_observation_i">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/time_of_observation"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#time_of_observation_r -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#time_of_observation_r">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/time_of_observation"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#time_of_observation_u -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#time_of_observation_u">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/time_of_observation"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry#time_of_observation_z -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Photometry#time_of_observation_z">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/skyserver/time_of_observation"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Spectroscopy#bestPhotometryID -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Spectroscopy#bestPhotometryID">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Spectroscopy"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Spectroscopy#best_spectrum -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Spectroscopy#best_spectrum">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Spectroscopy"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Spectroscopy#fiber_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Spectroscopy#fiber_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Spectroscopy"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Spectroscopy#modified_julien_date -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Spectroscopy#modified_julien_date">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Spectroscopy"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Spectroscopy#plate_number -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Spectroscopy#plate_number">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Spectroscopy"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Spectroscopy#spectroscopic_subclass -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Spectroscopy#spectroscopic_subclass">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Spectroscopy"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Spectroscopy#spectroscopy_object_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Spectroscopy#spectroscopy_object_id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Spectroscopy"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Spectroscopy#velocity_dispersion -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Spectroscopy#velocity_dispersion">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Spectroscopy"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Spectroscopy#velocity_dispersion_error -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Spectroscopy#velocity_dispersion_error">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Spectroscopy"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Spplines#SPECOBJID -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/skyserver/Spplines#SPECOBJID">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/skyserver/Spplines"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Asteroid -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/Asteroid"/>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Galaxy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/Galaxy"/>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Galspecline -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/Galspecline"/>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Neighbors -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/Neighbors"/>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/PhotoAsteroid -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/PhotoAsteroid">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/Asteroid"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/PhotoBinaryStarWithWhiteDwarf -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/PhotoBinaryStarWithWhiteDwarf">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/PhotoStar"/>
+        <rdfs:comment>Binary Star with White Dwarf companion, using simple color cuts from Paula Szkody</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/PhotoCataclysmicVariableswithWhiteDwarf -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/PhotoCataclysmicVariableswithWhiteDwarf">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/PhotoStar"/>
+        <rdfs:comment>Cataclysmic Variables (CVs) and pre-CVs with White Dwarfs and very late secondaries, using simple color cuts from Paula Szkody.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/PhotoGalaxy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/PhotoGalaxy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/Galaxy"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/PhotoStar -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/PhotoStar">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/Photometry"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/Star"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Photometry -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/Photometry">
+        <rdfs:comment>This corresponds to elements in PhotoObj</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Quasar -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/Quasar"/>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/SpecAGN -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/SpecAGN">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/SpecGalaxy"/>
+        <rdfs:comment>Active galactic nuclei AGN</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/SpecAGNtypeI -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/SpecAGNtypeI">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/SpecAGN"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/SpecAGNtypeII -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/SpecAGNtypeII">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/SpecAGN"/>
+        <rdfs:comment>Active galactic nuclei with narrow spectral lines AGN type2</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/SpecCarbonStar -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/SpecCarbonStar">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/SpecStar"/>
+        <rdfs:comment>dwarf and giant Carbon stars
+
+Stars near the end of thier lives</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/SpecCataclysmicVariables -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/SpecCataclysmicVariables">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/SpecStar"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/SpecGalaxy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/SpecGalaxy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/Galaxy"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/Spectroscopy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/SpecHotMassiveBlueStar -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/SpecHotMassiveBlueStar">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/SpecStar"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/SpecQuasar -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/SpecQuasar">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/Quasar"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/Spectroscopy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/SpecRtypeNtypeStar -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/SpecRtypeNtypeStar">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/SpecCarbonStar"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/SpecStar -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/SpecStar">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/Spectroscopy"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/Star"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/SpecStarBurstGalaxy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/SpecStarBurstGalaxy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/SpecGalaxy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/SpecStarFormingGalaxy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/SpecStarFormingGalaxy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/SpecGalaxy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/SpecStarTypeA -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/SpecStarTypeA">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/SpecStar"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/SpecStarTypeB -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/SpecStarTypeB">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/SpecStar"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/SpecStarTypeF -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/SpecStarTypeF">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/SpecStar"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/SpecStarTypeG -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/SpecStarTypeG">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/SpecStar"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/SpecStarTypeK -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/SpecStarTypeK">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/SpecStar"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/SpecStarTypeL -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/SpecStarTypeL">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/SpecStar"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/SpecStarTypeM -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/SpecStarTypeM">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/SpecStar"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/SpecStarTypeO -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/SpecStarTypeO">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/SpecStar"/>
+        <rdfs:comment>The main Spectral Type is &quot;O&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/SpecStarTypeT -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/SpecStarTypeT">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/SpecStar"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/SpecWhiteDwarf -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/SpecWhiteDwarf">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/skyserver/SpecStar"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Spectroscopy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/Spectroscopy">
+        <rdfs:comment>This corresponds to the elements in Specobj</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Spplines -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/Spplines"/>
+    
+
+
+    <!-- http://www.semanticweb.org/skyserver/Star -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/skyserver/Star"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
