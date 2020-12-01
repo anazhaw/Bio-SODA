@@ -56,7 +56,7 @@ public class InitParams {
 		try {
 
 			// test if init file can be read
-			File initFile = new File(Constants.FN_INIT);
+			File initFile = new File(Constants.FN_AUTO_INIT);
 			if (initFile.canRead()) {
 
 				// load properties

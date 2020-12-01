@@ -71,7 +71,7 @@ public class Constants {
 
 	public static final String FN_CONFIG = "semdwhsearch.properties";
 
-	public static final String FN_INIT = "";
+	//public static final String FN_INIT = "";
 
 	public static final String FN_AUTO_INIT = "";
 	public static final String FN_METADATA_MAPPING = "metadata-mapping.txt";
