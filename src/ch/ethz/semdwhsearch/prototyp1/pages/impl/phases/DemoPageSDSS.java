@@ -88,6 +88,10 @@ public class DemoPageSDSS extends AbstractPage {
                 html.append("<table class='questions'>\n");
                 html.append("<tr>\n");
                 html.append("<th>");
+                html.append("ID");
+                html.append("</th>");
+
+                html.append("<th>");
                 html.append("Question");
                 html.append("</th>");
                
@@ -96,9 +100,9 @@ public class DemoPageSDSS extends AbstractPage {
                 for (int i = 0; i < questions.size(); i++) {                              
                         html.append("</tr>\n");
                         html.append("<tr>\n");
-                       
+                        html.append("<td>"+ (i+1) + "</td>");
                         html.append("<td>");
-                        html.append("<a href=\"" + Escape.safeXml("http://biosoda-prod.cloudlab.zhaw.ch:8091/soda/?page=biosoda&q=") + Escape.safeXml(questions.get(i)) + "\">");
+                        html.append("<a href=\"" + Escape.safeXml("http://biosoda-prod.cloudlab.zhaw.ch:8091/biosoda/?page=biosoda&q=") + Escape.safeXml(questions.get(i)) + "\">");
                         html.append(questions.get(i));
                         html.append("</a>");
                         html.append("</td>\n");
