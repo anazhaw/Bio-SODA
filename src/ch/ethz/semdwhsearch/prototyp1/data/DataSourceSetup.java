@@ -60,9 +60,10 @@ public class DataSourceSetup {
 			ds.setUsername(username);
 			ds.setPassword(password);
 			ds.setUrl(url);
-		    ds.setValidationQuery("SELECT * from biosoda_idx_metadata_values limit 1");
+		    //uncomment the following lines after creating the metadata table:
+			/*ds.setValidationQuery("SELECT * from biosoda_idx_metadata_values limit 1");
 			ds.setTestOnBorrow(true);
-			ds.setRemoveAbandoned(true);	
+			ds.setRemoveAbandoned(true);	*/
 			return ds;
 		}
 	}
