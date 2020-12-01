@@ -639,7 +639,7 @@ public class SPARQLUtilsRemote {
 		prop = prop.replace("<","").replace(">","");
 		HashSet<String> results = new HashSet<String>();
 		OntModel model = ModelFactory.createOntologyModel( OntModelSpec.OWL_MEM );
-        model.read( MetadataSingleton.getInstance().getMetadata().getDataDirPath() + "onto_dr-16_manual_merged-with-mpboot_skyserver-merged.owl");
+        model.read( MetadataSingleton.getInstance().getMetadata().getDataDirPath() + Constants.ONTOLOGY_FILE);
 		OntProperty locatedIn = model.getOntProperty( prop );
 		ExtendedIterator<? extends OntResource> domains = locatedIn.listDomain();
 		while ( domains.hasNext() ) { 
@@ -695,7 +695,7 @@ public class SPARQLUtilsRemote {
 		HashSet<String> results = new HashSet<String>();
 		prop = prop.replace("<","").replace(">","");
 		OntModel model = ModelFactory.createOntologyModel( OntModelSpec.OWL_MEM );
-		model.read( MetadataSingleton.getInstance().getMetadata().getDataDirPath() );
+        model.read( MetadataSingleton.getInstance().getMetadata().getDataDirPath() + Constants.ONTOLOGY_FILE);
 		OntProperty locatedIn = model.getOntProperty( prop );
 		ExtendedIterator<? extends OntResource> ranges = locatedIn.listRange();
 		while ( ranges.hasNext() ) {

@@ -85,6 +85,7 @@ public class Constants {
 	public static final boolean USE_REMOTE = true;
 	public static final String REMOTE_REPO = ""; //put URL to SPARQL endpoint here! 
 	public static final String PAGERANK_REPO = "";
+	public static final String ONTOLOGY_FILE = ""; //put name of ontology file (not full path), e.g. my_ontology.owl
 
 	// -------------------------------------------------------- parameter names
 
