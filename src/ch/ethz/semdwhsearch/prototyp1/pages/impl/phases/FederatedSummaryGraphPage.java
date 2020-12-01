@@ -220,7 +220,7 @@ public class FederatedSummaryGraphPage extends AbstractPage {
 
 			TokenList tokens = nlpPipeline.annotate(qStr);
 
-			logger.info("Lookup for candidate matches...");
+			logger.info("Lookup for candidate matches...tokens: " + tokens);
 			List<RdfDagNode> lookupResult = lookup.lookup(tokens);
 			logger.info("Done Index Lookup for candidate matches..." + Dates.timeFormatterSQL.format(new Date()));
 
@@ -529,7 +529,9 @@ public class FederatedSummaryGraphPage extends AbstractPage {
 					String resType = term.filteredClass;
 					if(resType == null)
 						if(Constants.USE_REMOTE) {
-							resType = SPARQLUtilsRemote.getTypeOfResource(endpoint, term.value);	
+							resType = SPARQLUtilsRemote.getTypeOfResource(endpoint, term.value);
+							if(resType == null)
+								resType = SPARQLUtilsLocal.getTypeOfResource(m, term.value);	
 							classMap.put(term.value, resType);
 						}
 						else {
@@ -563,7 +565,9 @@ public class FederatedSummaryGraphPage extends AbstractPage {
 							String toSearchType = classMap.get(toSearch);
 							if(toSearchType == null)
 								if(Constants.USE_REMOTE) {
-									toSearchType = SPARQLUtilsRemote.getTypeOfResource(endpoint, toSearch);	
+									toSearchType = SPARQLUtilsRemote.getTypeOfResource(endpoint, toSearch);
+									if(toSearchType == null)
+										toSearchType = SPARQLUtilsLocal.getTypeOfResource(m, toSearch);	
 									classMap.put(term.value, resType);
 								}
 								else {
@@ -616,7 +620,7 @@ public class FederatedSummaryGraphPage extends AbstractPage {
 
 							HashSet<String> domains = domainsMap.get(prop);
 							if(domains == null) {
-								domains = SPARQLUtilsRemote.getDomainOfPropertyRemote(prop, endpoint);
+								domains = SPARQLUtilsRemote.getDomainOfPropertyFromLocalOntology(prop); //getDomainOfPropertyFromSummaryGraph(prop, g); //getDomainOfPropertyRemote(prop, endpoint);
 								domainsMap.put(prop, domains);
 							}
 							//TODO: if there is no domain, add text filter on this prop and create multiple SPARQL queries
@@ -668,7 +672,7 @@ public class FederatedSummaryGraphPage extends AbstractPage {
 
 							HashSet<String> ranges = rangesMap.get(prop);
 							if(ranges == null) {
-								ranges = SPARQLUtilsRemote.getRangeOfPropertyRemote(prop, endpoint);
+								ranges = SPARQLUtilsRemote.getRangeOfPropertyFromSummaryGraph(prop, g);//getRangeOfPropertyRemote(prop, endpoint);
 								// assumption: if range null, then it might be a string property
 								if(ranges == null || ranges.size() == 0) {
 									ranges.add("<http://www.w3.org/2001/XMLSchema#string" + Math.random() + ">");
@@ -781,7 +785,9 @@ public class FederatedSummaryGraphPage extends AbstractPage {
 						if(resType == null)
 							if(Constants.USE_REMOTE) {
 								resType = SPARQLUtilsRemote.getTypeOfResource(endpoint, term.value);
-								if(resType == null) {
+								if(resType == null) 
+									resType = SPARQLUtilsLocal.getTypeOfResource(m, term.value);	
+								if(resType == null){
 									resType = "null";
 								}			
 								classMap.put(term.value, resType);
@@ -859,6 +865,8 @@ public class FederatedSummaryGraphPage extends AbstractPage {
 						if(resTypeVertex == null)
 							if(Constants.USE_REMOTE) {
 								resTypeVertex = SPARQLUtilsRemote.getTypeOfResource(endpoint, vertex);
+								if(resTypeVertex == null)
+									resTypeVertex = SPARQLUtilsLocal.getTypeOfResource(m, vertex);
 								classMap.put(vertex, resTypeVertex);
 							}
 							else {
@@ -917,6 +925,8 @@ public class FederatedSummaryGraphPage extends AbstractPage {
 								if(resTypeVertex == null)
 									if(Constants.USE_REMOTE) {
 										resTypeVertex = SPARQLUtilsRemote.getTypeOfResource(endpoint, otherVertex);
+										if(resTypeVertex == null)
+											resTypeVertex = SPARQLUtilsLocal.getTypeOfResource(m, otherVertex);
 										classMap.put(otherVertex, resTypeVertex);
 									}
 									else {
@@ -1020,7 +1030,9 @@ public class FederatedSummaryGraphPage extends AbstractPage {
 														String vType = classMap.get(filteredClass);
 														if(vType == null)
 															if(Constants.USE_REMOTE) {
-																vType = SPARQLUtilsRemote.getTypeOfResource(endpoint, filteredClass);	
+																vType = SPARQLUtilsRemote.getTypeOfResource(endpoint, filteredClass);
+																if(vType == null)
+																	vType = SPARQLUtilsLocal.getTypeOfResource(m, filteredClass);
 																classMap.put(filteredClass, vType);
 															}
 															else {

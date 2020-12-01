@@ -846,7 +846,7 @@ public class SPARQLUtilsRemote {
 	}
 
 	public static String getTypeOfResource(String endpoint, String resourceURI){
-		if(resourceURI == null)
+		if(resourceURI == null || resourceURI.isEmpty())
 			return null;
 		if(!resourceURI.startsWith("<"))
 			resourceURI = "<" + resourceURI +">";
@@ -1536,7 +1536,7 @@ public class SPARQLUtilsRemote {
 				}
 				for(Filter f: filterTriples) {
 					if(f.rdfClass.equals("NUMERICAL")){
-						if(f.operator.equals("="))
+						if(f.operator.equals("=") || f.operator.isEmpty())
 							result += " FILTER (str(" + f.varName + ") " + " = " + "\"" + f.kw.toLowerCase() + "\"" + ")" + "\n";
 						else {
 							result += " FILTER (" + f.varName + " " + f.operator + " " + f.kw.toLowerCase() + " " + ")" + "\n";

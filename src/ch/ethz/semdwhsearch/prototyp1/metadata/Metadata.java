@@ -186,7 +186,7 @@ public class Metadata {
 
 		// ********* Federated *********** ///
 		Model allModels = ModelFactory.createDefaultModel();
-		if(appendIdx || reloadIdx) {
+		if(appendIdx || reloadIdx || (!Constants.REMOTE_INDEXING)) {
 			if(Constants.ONDISK_MODEL){
 				Dataset ds = TDBFactory.createDataset(Constants.TBD_DATA_DIR);
 				allModels = ds.getDefaultModel();
@@ -195,7 +195,7 @@ public class Metadata {
 				// do nothing, model will be added from remote below
 				;
 			}
-			else{
+			else {
 				modelsDos = EModels.getFromDir(new File(getDataDirPath()));
 				logger.info("GOT FROM DIR MODELS "+ modelsDos.size());
 	

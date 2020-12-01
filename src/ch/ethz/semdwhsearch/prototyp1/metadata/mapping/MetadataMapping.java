@@ -63,6 +63,24 @@ public class MetadataMapping {
 		return mapping.get("general.propnames.caption");
 	}
 
+	public Set<String> getGeneralPropNamesCaptionSetOriginalCase(){
+		String pnsCaption = getGeneralPropNamesCaption();
+                if (pnsCaption == null || pnsCaption.isEmpty()) {
+                        return new HashSet<String>();
+                }
+
+                String[] pnsCaptionArray = pnsCaption.split(",");
+                Set<String> pnsCaptionSet = new HashSet<String>();
+                for (String pngCaption : pnsCaptionArray) {
+                        pngCaption = pngCaption.trim();
+                        if (pngCaption.length() > 0) {
+                                pnsCaptionSet.add(pngCaption);
+                        }
+                }
+                return pnsCaptionSet;
+
+	}
+
 	public Set<String> getGeneralPropNamesCaptionSet() {
 		String pnsCaption = getGeneralPropNamesCaption();
 		if (pnsCaption == null || pnsCaption.isEmpty()) {

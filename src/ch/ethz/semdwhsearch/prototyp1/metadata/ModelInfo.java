@@ -387,8 +387,7 @@ public class ModelInfo {
                         }
 			String key =  subjUri + "###" + className + "###" + ""; //property is the URI
 			//todo: decide if we want to only do this for URIs which have no label assigned
-			if(subjUri != null && 
-					(Constants.indexURIFragments || (!(labelDefinedForURI.contains(subjUri))))) {
+			if(subjUri != null && Constants.indexURIFragments) {
 				StringBuffer buf = new StringBuffer();
 				String localName = SPARQLUtilsRemote.getLiteralFromString(subjUri);
 				if(localName == null)
@@ -420,9 +419,7 @@ public class ModelInfo {
                                 classMap.put(propUri, className);
                         }
 			key =  propUri + "###" + className + "###" + "";
-			if(propUri != null  && 
-				(Constants.indexURIFragments 
-					|| (!(labelDefinedForURI.contains(propUri))))) {
+			if(propUri != null  && Constants.indexURIFragments) { 
 				StringBuffer buf = new StringBuffer();
 				String localName = SPARQLUtilsRemote.getLiteralFromString(propUri);
 				if(localName == null)
@@ -454,8 +451,7 @@ public class ModelInfo {
                                         classMap.put(objUri, className);
                                 }
 				key =  objUri + "###" + className + "###" + "";
-				if(objUri != null && (Constants.indexURIFragments 
-						|| (!(labelDefinedForURI.contains(objUri))))) {
+				if(objUri != null && Constants.indexURIFragments) {
 					StringBuffer buf = new StringBuffer();
 					String localName = SPARQLUtilsRemote.getLiteralFromString(objUri);
 					if(localName == null)
@@ -464,11 +460,22 @@ public class ModelInfo {
 					String[] splits = localName.split(Constants.PUNCTUATION_FOR_SPLITS);
 
 					for(String word : splits) {
+                	                        //also split camelCase
+                        	                String[] camelCaseSplit = word.split("(?<!(^|[A-Z]))(?=[A-Z])|(?<!^)(?=[A-Z][a-z])");
+                                	        for(String camelCaseSplittedWord : camelCaseSplit){
+                                        	        if(!buf.toString().contains(camelCaseSplittedWord)) {
+                                                	        buf.append(camelCaseSplittedWord);
+                                                        	buf.append(" ");
+                                                	}
+        	                                }
+	                                }
+
+					/*for(String word : splits) {
 						if(!buf.toString().contains(word)) {	
 							buf.append(word);
 							buf.append(" ");
 						}
-					}
+					}*/
 					if(!buf.toString().contains(localName)) {	
 						buf.append(localName);
 						buf.append(" ");
@@ -550,23 +557,28 @@ public class ModelInfo {
 	 */
 	private void parseModelFromRemote(String endpoint, MetadataMapping mapping) {
 		// 1. get all properties with literals in the endpoint
-		String query = "select distinct ?prop where { ?x ?prop ?y . filter(isLiteral(?y)) } "; 
+		/*String query = "select distinct ?prop where { ?x ?prop ?y . filter(isLiteral(?y)) } "; 
 		
 		ArrayList<String> propertiesToIndex = (ArrayList<String>) SPARQLUtilsRemote.execRemoteQuery(query, endpoint);
 		
 		System.out.println("Will index: "+ propertiesToIndex);
-
+		*/
 		// 2. iterate through all and associate literal with subject as done above
 
 		// property names caption configured by user
-		Set<String> pnsCaptionSet = mapping.getGeneralPropNamesCaptionSet();
+		Set<String> pnsCaptionSet = mapping.getGeneralPropNamesCaptionSetOriginalCase();
 
+		//TODO: REMOVE
+		ArrayList<String> propertiesToIndex = new ArrayList<String>(pnsCaptionSet);
 		for(String propertyURI : propertiesToIndex) {
 			
 			// get only the fragment name, e.g. "label", "identifier", "name" etc - to be compliant with how these are configured in the metadata file
-			String propName = SPARQLUtilsRemote.getLiteralFromString(propertyURI);
+			//COMMENT OUT:
+			//String propName = SPARQLUtilsRemote.getLiteralFromString(propertyURI);
+			String propName = propertyURI;
+
 			//index literals as indicated by the mapping properties, e.g. label (or everything if the set is empty)
-			if (pnsCaptionSet.size() == 0 || pnsCaptionSet.contains(propName.toLowerCase())) {
+			if (pnsCaptionSet.size() == 0 || pnsCaptionSet.contains(propName)) {
 				// paginate! LIMIT + OFFSET
 				int current_batch = 0;
 				
