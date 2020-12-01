@@ -3,11 +3,9 @@
 # general
 #
 
-# comma separated list of property names for a caption of a node
-general.propnames.caption = 
-#Name,label,geneName,scientificName,commonName,hasOMAId,uri,type,speciesName,stageName,identifier,indication,state,generalFunction,brandName,predictedWaterSolubility,generalFunction,state,brandName,proteinBinding,foodInteraction,drugName,mechanismOfAction,synonym,genericName,sideEffectName
-#QALD4: is it needed? the synonym property
-#add back: description, comment, altLabel
+# comma separated list of property names for a caption of a node (leave empty to index all)
+general.propnames.caption = <http://www.semanticweb.org/skyserver/Spectroscopy#spectroscopic_subclass>,<http://www.semanticweb.org/skyserver/spectroscopyClass>
+#<http://www.w3.org/2000/01/rdf-schema#comment>
 
 
 
