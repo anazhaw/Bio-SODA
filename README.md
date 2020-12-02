@@ -63,7 +63,7 @@ Possible examples:
 * Show all persons who live in the USA. 
 
 ### Evaluation 
-Note that more advanced example on 3 real-world datasets tested with Bio-SODA are available at the demo page [here](http://biosoda.expasy.org/welcome/). A detailed analysis of results across multiple systems tested with the 3 datasets, part of our VLDB submission, is available in the [Evaluation](https://github.com/anazhaw/Bio-SODA/tree/master/Evaluation) folder.
+Note that more advanced example on 3 real-world datasets tested with Bio-SODA are available at the demo page [here](http://biosoda.expasy.org/welcome/). A detailed analysis of results across multiple systems tested with the 3 datasets is available in the [Evaluation](https://github.com/anazhaw/Bio-SODA/tree/master/Evaluation) folder.
 
 The results can be reproduced by testing questions on the demo pages of the three datasets or by uploading data in a new installation of the system and processing it in Bio-SODA as described above. For example, official datasets for the QALD4 biomedical benchmark can be downloaded from [here](https://github.com/ag-sc/QALD/tree/master/4/data).
 
