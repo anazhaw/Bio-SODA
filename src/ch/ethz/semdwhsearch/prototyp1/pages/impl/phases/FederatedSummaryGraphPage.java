@@ -754,10 +754,10 @@ public class FederatedSummaryGraphPage extends AbstractPage {
 							continue;
 						String[] splits = term.label.toLowerCase().split(Constants.PUNCTUATION_FOR_SPLITS);
 						if(splits.length > 1) {
-							sparqlFilters.add(term.filteredClass + "###" + term.filteredProp + "###" +  term.label.toLowerCase());
+							sparqlFilters.add(term.filteredClass + "###" + term.filteredProp + "###" + "=" + "###" +  term.label.toLowerCase());
 						}    
 						else {
-							sparqlFilters.add(term.filteredClass + "###" + term.filteredProp + "###" + term.key);
+							sparqlFilters.add(term.filteredClass + "###" + term.filteredProp + "###"  + "=" + "###" + term.key);
 						}
 					}
 					for(Term numericalTerm : numericalTerms) {
@@ -1539,10 +1539,10 @@ public class FederatedSummaryGraphPage extends AbstractPage {
 							String[] splits = term.label.toLowerCase().split(Constants.PUNCTUATION_FOR_SPLITS);
 
 							if(splits.length > 1) {
-								sparqlFilters.add(term.filteredClass + "###" + term.filteredProp + "###" +  term.label.toLowerCase());
+								sparqlFilters.add(term.filteredClass + "###" + term.filteredProp + "###" + "=" + "###" +  term.label.toLowerCase());
 							}
 							else {
-								sparqlFilters.add(term.filteredClass + "###" + term.filteredProp + "###" + term.key);
+								sparqlFilters.add(term.filteredClass + "###" + term.filteredProp + "###" + "=" + "###" + term.key);
 							}
 						}
 						for(Term numericalTerm : numericalTerms) {
