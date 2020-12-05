@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import ch.ethz.semdwhsearch.prototyp1.actions.Params;
+import ch.ethz.semdwhsearch.prototyp1.constants.Constants;
 import ch.ethz.semdwhsearch.prototyp1.classification.Classification;
 import ch.ethz.semdwhsearch.prototyp1.constants.PageNames;
 import ch.ethz.semdwhsearch.prototyp1.localization.Dictionary;
@@ -44,7 +45,7 @@ public class DemoPageSDSS extends AbstractPage {
 		String Q5 = "show all hot massive blue stars ";
 		String Q6 = "show all spec stars with plate number 1760";
 		String Q7 = "show all spec stars with the subclass WDhotter";
-		String Q8 = "redshift of spectroscopic objects whose class is QSO";
+		String Q8 = "redshift of spectroscopy with class QSO"; //todo: change back to spectroscopic objects when labels available
 		String Q9 = "show all quasars with ascension > 120 and declination > 5.2";
 		String Q10 = "show all star burst galaxies with velocity dispersion > 800";
 		
@@ -112,7 +113,7 @@ public class DemoPageSDSS extends AbstractPage {
                 html.append("</table>\n");
                 
                 html.append("<ul>\n");
-                html.append("<li>To start, click on one of the above questions (expected response time generally under 10 seconds)</li>");
+                html.append("<li>To start, click on one of the above questions (queries will be executed at the SPARQL endpoint <a href=\"" + Escape.safeXml(Constants.REMOTE_REPO).replace("sparql", "") + "\">" + Escape.safeXml(Constants.REMOTE_REPO)+ "</a>)</li>");
                 html.append("<li>...or use the input field above to simply type in your question and then hit the button \"Go\"</li>");
                 html.append("</ul>\n");
 		
