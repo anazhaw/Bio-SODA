@@ -39,7 +39,7 @@ public class DemoPageSDSS extends AbstractPage {
 	
 	public ArrayList<String> getQuestions() {
 		String Q1 = "show all spec galaxies with ascension < 130 declination > 5";
-		String Q2 = "show all photo galaxies with magnitude_g <= 23 magnitude_g >= 21 ascension < 130 declination > 5";
+		String Q2 = "show all photo galaxies with magnitude_g <= 23 ascension < 130 declination > 5";
 		String Q3 = "show all photo asteroids with mode of photo observation 1";
 		String Q4 = "show white dwarfs with redshift > 0";
 		String Q5 = "show all hot massive blue stars ";

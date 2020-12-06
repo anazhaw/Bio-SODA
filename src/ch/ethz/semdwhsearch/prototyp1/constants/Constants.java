@@ -27,7 +27,7 @@ public class Constants {
 
 	public static final int MAX_RESULT_COUNT = 10;
 
-	public static final int MAX_TERM_COMBINATIONS = 1000;
+	public static final int MAX_TERM_COMBINATIONS = 2000;
 
 	public static final int MAX_HOPS_SHORTEST_PATH = 4;
 
