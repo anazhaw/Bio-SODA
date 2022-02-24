@@ -1,0 +1,420 @@
+<!doctype html>
+<html class="no-js" lang="">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<title>BioSODA UX</title>
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<link rel="manifest" href="site.webmanifest" />
+		<link rel="icon" href="favicon.ico" />
+		<link rel="stylesheet" href="css/normalize.css" />
+		<link rel="stylesheet" href="css/bootstrap.css" />
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="css/fontawesome/css/all.css" />
+	</head>
+	<body>
+		<div class="container-fluid" id="wholecontent">
+			<div id="theCat" onclick="return false; $('#demo').show(); $('#meow')[0].play();">
+				<audio id="meow">
+					<source src="meow.mp3" type="audio/ogg">
+				</audio> 
+			</div>
+			<div class="row" id="logo">
+				<img src="biosoda_logo.png" alt="Logo bioSODA">
+			</div>
+			
+			<!-- get video demo here https://mdbootstrap.com/docs/jquery/javascript/carousel/ -->
+			<div class="row justify-content-md-center bg-light" id="demo">
+				<div class="col-6 offset-3">
+					<div id="carouselExampleIndicators" class="carousel slide row " data-ride="carousel">
+						<div class="carousel-inner col-12 row">
+							
+							<a class="carousel-control-prev col-4" href="#carouselExampleIndicators" role="button" data-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								<span class="sr-only">Previous</span>
+							</a>
+							
+							<div class="carousel-item active col-auto">
+								<div class="carousel-caption d-none d-md-block">
+									<strong>Quick interface overview</strong><br>All the buttons, input fields, the graph, scrolling, ...
+								</div>
+								<div class="videodiv">
+									<video controls class="embed-responsive-item col-12" preload="none" poster="video/interface.jpg">
+										<source src="video/interface.mp4" type="video/mp4">
+									</video>
+								</div>
+							</div>
+							
+							<div class="carousel-item col-auto">
+								<div class="carousel-caption d-none d-md-block">
+									<strong>Simple search</strong><br>We want to have a list of genes in human beings.
+								</div>
+								<div class="videodiv">
+									<video controls class="embed-responsive-item col-12" preload="none" poster="video/simplesearch_genesinhuman.jpg">
+										<source src="video/simplesearch_genesinhuman.mp4" type="video/mp4">
+									</video>
+								</div>
+							</div>
+							
+							<div class="carousel-item col-auto">
+								<div class="carousel-caption d-none d-md-block">
+									<strong>Watch a video</strong><br>We've got a lot of videos. Here you see how you can watch them.
+								</div>
+								<div class="videodiv">
+									<video controls class="embed-responsive-item col-12" preload="none" poster="video/videowatch.jpg">
+										<source src="video/videowatch.mp4" type="video/mp4">
+									</video>
+								</div>
+							</div>
+							
+							<div class="carousel-item col-auto">
+								<div class="carousel-caption d-none d-md-block">
+									<strong>Example Query #3</strong><br>We are looking for "Which species the Mtco1 gene is present (without considering synonyms)?" and have a look at the result.
+								</div>
+								<div class="videodiv">
+									<video controls class="embed-responsive-item col-12" preload="none" poster="video/examples_3.jpg">
+										<source src="video/examples_3.mp4" type="video/mp4">
+									</video>
+								</div>
+							</div>
+							
+							<div class="carousel-item col-auto">
+								<div class="carousel-caption d-none d-md-block">
+									<strong>Understanding stroke design concept</strong><br>Since we have got a lot of hihgly specific data, we needed to implement a good stroke design. Here is how to understand it.
+								</div>
+								<div class="videodiv">
+									<video controls class="embed-responsive-item col-12" preload="none" poster="video/understanding.jpg">
+										<source src="video/understanding.mp4" type="video/mp4">
+									</video>
+								</div>
+							</div>
+							
+							<div class="carousel-item col-auto">
+								<div class="carousel-caption d-none d-md-block">
+									<strong>Add thing to table or remove them</strong><br>All the userchosen conecpts are in the table automatically. What if we want to add another node?
+								</div>
+								<div class="videodiv">
+									<video controls class="embed-responsive-item col-12" preload="none" poster="video/addremove.jpg">
+										<source src="video/addremove.mp4" type="video/mp4">
+									</video>
+								</div>
+							</div>
+							
+							<div class="carousel-item col-auto">
+								<div class="carousel-caption d-none d-md-block">
+									<strong>Search the FAQ for a therm</strong><br>You can scroll through the FAQ to learn everything or just search for your term. Even the videos are searched.
+								</div>
+								<div class="videodiv">
+									<video controls class="embed-responsive-item col-12" preload="none" poster="video/searchFAQ.jpg">
+										<source src="video/searchFAQ.mp4" type="video/mp4">
+									</video>
+								</div>
+							</div>
+							
+							<a class="carousel-control-next col-4" href="#carouselExampleIndicators" role="button" data-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span>
+								<span class="sr-only">Next</span>
+							</a>
+							
+						</div>
+						<div class="col-12 row">
+							<ol class="carousel-indicators text-dark">
+								<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active bg-dark"></li>
+								<li data-target="#carouselExampleIndicators" data-slide-to="1" class="bg-dark"></li>
+								<li data-target="#carouselExampleIndicators" data-slide-to="2" class="bg-dark"></li>
+								<li data-target="#carouselExampleIndicators" data-slide-to="3" class="bg-dark"></li>
+								<li data-target="#carouselExampleIndicators" data-slide-to="4" class="bg-dark"></li>
+								<li data-target="#carouselExampleIndicators" data-slide-to="5" class="bg-dark"></li>
+								<li data-target="#carouselExampleIndicators" data-slide-to="6" class="bg-dark"></li>
+							</ol>
+						</div>
+					</div>
+				</div>
+				<div class="col-3 text-right">
+					<a href="#" onclick="$('#demo').hide(); pauseallvideos();">X</a>
+				</div>
+			</div>
+			
+			<div class="row justify-content-md-center" id="topsearch">
+				<div class="col-md-10">
+					
+					<div class="row pb-0" id="boxsearch">
+						<div id="pseudoinput" class="col-10">
+							<input name="tags[0]" value="" class="autosize" autocomplete="off">
+						</div>
+						
+						<button onclick="queryButtonClick(this);" id="searchButton" data-default="search!" data-after="alter / new">search!</button>
+					</div>
+					
+					<div class="row p-0 m-0 searchexamples"><p>
+						Examples 
+						<a href="#" data-search="scientific name of horse">#1</a>,
+						<a href="#" data-search="genes in gorilla">#2</a>,
+						<a href="#" data-search="genes in liver">#3</a>,
+						<a href="#" data-search="genes in gorilla liver">#4</a>,
+						<a href="#" data-search="scientific name of species in bgee with their uniprot taxon">#5</a>,
+						<a href="#" data-search="genes with lung in the description">#6</a>,
+						<a href="#" data-search="in which species is the Mtco1 gene present?">#7</a>,
+						<a href="#" data-search="list the labels and identifiers of fruit fly genes in bgee">#8</a>,
+						<a href="#" data-search="human anatomic entities at young adult developmental stage">#9</a>,
+						<a href="#" data-search="anatomic entities where the apoc1 gene is expressed">#10</a>,
+						<a href="#" data-search="anatomic entities in rats where the apoc1 gene is expressed">#11</a>,
+						<a href="#" data-search="anatomic entities at the mouse's adult stage where the apoc1 gene is expressed">#12</a>,
+						<a href="#" data-search="drosophila anatomic entities at the embryo developmental stage">#13</a>
+					</p></div>
+				</div>
+			</div>
+			
+			<div class="row justify-content-md-center" id="d3graph" style="height: 600px;">
+				
+				<div id="svg" class=" h-100 col-md-8 d-inline-block m-2" style="background-color: rgba(250, 250, 250, 0.9); border-radius: 2em;"></div>
+				
+				<div class="col-md-3">
+					<ul class="nav nav-tabs nav-fill justify-content-center" id="myTab" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link disabled" id="tabDetails-tab" data-toggle="tab" data-target="#tabDetails" role="tab" aria-controls="tabDetails" aria-selected="true">Details</a>
+						</li>
+						<li class="nav-item" style="display: none;">
+							<a class="nav-link active" id="tabHelp-tab" data-toggle="tab" data-target="#tabHelp" role="tab" aria-controls="tabHelp" aria-selected="false">Help</a>
+						</li>
+					</ul>
+					
+					<div class="p-3" id="infobox" style="background-color: rgba(250, 250, 250, 0.9); border-radius: 0 0 1em 1em; height: 550px;">
+						<div class="tab-content h-100" id="myTabContent">
+							<div class="tab-pane fade show active" id="tabDetails" role="tabpanel" aria-labelledby="tabDetails-tab">
+								Click node to get more details
+							</div>
+							<div class="tab-pane fade" id="tabHelp" role="tabpanel" aria-labelledby="tabHelp-tab">
+								
+								<h2>How to use / FAQ</h2>
+								<p>Find some guide lines on how to use/read/understand our user interface. Once you checked out our videos (click the cat) and these instructions, you can do your own research easily.</p>
+								<p>Search the FAQ: <input onkeyup="filterFAQ(this.value);" value="" autocomplete="off"  placeholder="What are you looking for?"></p>
+								
+								<div class="singleq">
+									<h4>Ask the cat</h4>
+									<img src="img/helpngs/cat.png" alt="help cat">
+									<p>If anything is unclear, just click the cat. We've got tons of videos.</p>
+								</div>
+								
+								<div class="singleq">
+									<h4>Base graph</h4>
+									<img src="img/helpngs/basegraph.png" alt="help basegraph">
+									<p>When you look at our application at the start, you see a basic graph. Although it looks so inconspicuous, it represents the power with which you can search all databases. Only the main nodes and edges are shown. By hovering and clicking the graph, you can find out, what kind of data we can offer you.</p>
+								</div>
+								
+								<div class="singleq">
+									<h4>Ask a question</h4>
+									<img src="img/helpngs/askaquestion.png" alt="help question asking">
+									<p>Simply fill in your question in natural language. Our natural language API looks for matching concepts and shows them for you.</p>
+								</div>
+								
+								<div class="singleq">
+									<h4>Example questions</h4>
+									<img src="img/helpngs/examplequestions.png" alt="help example questions">
+									<p>During our research on the databases, we've formulated some queries that show the variety of the given data and also of the possible questions. You can fill them into the query field by just clicking their numbers.</p>
+								</div>
+								
+								<div class="singleq">
+									<h4>Search</h4>
+									<img src="img/helpngs/search.png" alt="help search">
+									<p>By hitting search, all of the results are reseted. The query is sent to the API and we have to wait until the data comes back.</p>
+								</div>
+								
+								<div class="singleq">
+									<h4>Searching the API</h4>
+									<img src="img/helpngs/searchingapi.png" alt="help searching spinner">
+									<p>While we wait for the results, the search button indicates a spinning circle. We cannot do anything in the meantime.</p>
+								</div>
+								
+								<div class="singleq">
+									<h4>Colored result</h4>
+									<img src="img/helpngs/colored result.png" alt="help colored results">
+									<p>As soon as we get the result back from the API, the query bar changes. Instead of having text only, the found concepts transform to colored buttons. These colors will represent the items from now on.</p>
+								</div>
+								
+								<div class="singleq">
+									<h4>Dropdowns for concepts</h4>
+									<img src="img/helpngs/dropdown concept.png" alt="help dropdown concept">
+									<p>The concept buttons act as dropdowns. If more than one concept is found for one item, you can choose the one which best fits to your question.</p>
+								</div>
+								
+								<div class="singleq">
+									<h4>Hover an item</h4>
+									<img src="img/helpngs/hoveritem.png" alt="help hover item">
+									<p>To better understand the different concepts, the according nodes get highlighted with a red border when you hover an item. It does not matter where you hover it (query bar drop down, graph, results table). If you hover the query bar button, all the according nodes are highlighted.</p>
+								</div>
+								
+								<div class="singleq">
+									<h4>Color concept</h4>
+									<img src="img/helpngs/colorconcept.png" alt="help color concept">
+									<p>To be able to follow an item from question to results table, the colors are kept the same for each item. The color itself has no meening at all bt is selectd to be as different from the others as possible.</p>
+								</div>
+								
+								<div class="singleq">
+									<h4>Node colors</h4>
+									<img src="img/helpngs/nodecolors.png" alt="help node colors">
+									<p>The nodes in the graph are colored according to the color concept as well. If a node belongs to more than one concept, it is indicated by having more than one color. Grey nodes determine from the original base graph.</p>
+								</div>
+								
+								<div class="singleq">
+									<h4>Attach nodes</h4>
+									<img src="img/helpngs/attachnodes.png" alt="helpt attach nodes">
+									<p>If a found concept is an instance of a Class in the graph, it gets attached to that. The information for this link will start with "attach link for ..."</p>
+								</div>
+								
+								<div class="singleq">
+									<h4>Userchosen nodes</h4>
+									<img src="img/helpngs/userchosen nodes.png" alt="help userchosen nodes">
+									<p>To get a result you have to chose one of the possible items from the API result. After loading the data, the first items get chosen automatically. You can chose another item by clicking it in the drop down or by double clicking it in the graph. All userschosen nodes are automatically selected for the results table.</p>
+								</div>
+								
+								<div class="singleq">
+									<h4>Information on hover</h4>
+									<img src="img/helpngs/hoverinfo.png" alt="help hover info">
+									<p>Hovering an item reveals it's full title in the top left corner of the graph. Gray nodes and edges which normally don't show any info on the graph additionally get labelled on site.</p>
+								</div>
+								
+								<div class="singleq">
+									<h4>Information on click</h4>
+									<img src="img/helpngs/clickinfo.png" alt="help click info">
+									<p>If you click an item, all the information about it will be shown in the "Dtails" tab. Where possible, the URI are linked.</p>
+								</div>
+								
+								<div class="singleq">
+									<h4>Stroke colors &amp; dashes</h4>
+									<img src="img/helpngs/strokecolors dashes.png" alt="help strokecolors">
+									<p>To get a better knowledge over the data, the graph follows the following rules for stroke styles:
+										<ul>
+											<li>Stroke dashes:
+												<ul>
+													<li>
+														<svg width="40" height="4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><line stroke="rgb(255, 0, 0)" stroke-width="4" x1="1" y1="1" x2="40" y2="1" stroke-dasharray="3 1"></line></svg>
+														3 1 userchosen & shortest link
+													</li>
+													<li>
+														<svg width="40" height="4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><line stroke="rgb(255, 0, 0)" stroke-width="4" x1="1" y1="1" x2="40" y2="1" stroke-dasharray="4 1"></line></svg>
+													4 1 attachlink & shortest link</li>
+													<li>
+														<svg width="40" height="4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><line stroke="rgb(255, 0, 0)" stroke-width="4" x1="1" y1="1" x2="40" y2="1" stroke-dasharray="1 0"></line></svg>
+														1 0 userchosen link
+													</li>
+													<li>
+														<svg width="40" height="4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><line stroke="rgb(255, 0, 0)" stroke-width="4" x1="1" y1="1" x2="40" y2="1" stroke-dasharray="1 1"></line></svg>
+													1 1 attach link</li>
+													<li>
+														<svg width="40" height="4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><line stroke="rgb(255, 0, 0)" stroke-width="4" x1="1" y1="1" x2="40" y2="1" stroke-dasharray="5 2"></line></svg>
+													5 2 other</li>
+												</ul>
+											</li>
+											<li>Stroke width:
+												<ul>
+													<li>
+														<svg width="40" height="30" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><line stroke="rgb(255, 0, 0)" stroke-width="30" x1="0" y1="15" x2="40" y2="15" stroke-dasharray="3 1"></line></svg>
+														30 userchosen & shortest link
+													</li>
+													<li>
+														<svg width="40" height="30" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><line stroke="rgb(255, 0, 0)" stroke-width="20" x1="0" y1="15" x2="40" y2="15" stroke-dasharray="3 1"></line></svg>
+														20 attachlink & shortest link
+													</li>
+													<li>
+														<svg width="40" height="30" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><line stroke="rgb(255, 0, 0)" stroke-width="10" x1="0" y1="15" x2="40" y2="15" stroke-dasharray="3 1"></line></svg>
+														10 shortest link
+													</li>
+													<li>
+														<svg width="40" height="30" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><line stroke="rgb(255, 0, 0)" stroke-width="5" x1="0" y1="15" x2="40" y2="15" stroke-dasharray="3 1"></line></svg>
+														5 userchosen link
+													</li>
+													<li>
+														<svg width="40" height="30" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><line stroke="rgb(255, 0, 0)" stroke-width="2" x1="0" y1="15" x2="40" y2="15" stroke-dasharray="3 1"></line></svg>
+														2 attach link
+													</li>
+													<li>
+														<svg width="40" height="30" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><line stroke="rgb(255, 0, 0)" stroke-width="1" x1="0" y1="15" x2="40" y2="15" stroke-dasharray="3 1"></line></svg>
+														1 other
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</p>
+								</div>
+								
+								<div class="singleq">
+									<h4>Results table</h4>
+									<img src="img/helpngs/resultstable.png" alt="help results table">
+									<p>The results table represents the concpt you chose for your expected results. You can chose any node from the result by clicking "add to table" in the "Details" tab. The chosen concepts are added per default but can also be removed from the table.</p>
+								</div>
+								
+								<div class="singleq">
+									<h4>Add to / remove from results table</h4>
+									<img src="img/helpngs/addremovetable.png" alt="help add/remove table">
+									<p>After clicking a concept, you can manually add or remove it to the results table by clicking "add to table" / "remove from table" in the "Details" tab.</p>
+								</div>
+								
+								<div class="singleq">
+									<h4>Shortest path</h4>
+									<img src="img/helpngs/shortestpath.png" alt="help shortest path">
+									<p>Our Interface automatically calculates a shortest path between all of the chosen nodes. This path is indicated with a special dash and with.</p>
+								</div>
+								
+								<div class="singleq">
+									<h4>Main topic / Filter / List</h4>
+									<img src="img/helpngs/MainFilterList.png" alt="help main filter">
+									<p>Choose wether your column is the main topic you are looking for, a filtering variable or the values you want to receive as a list.<br>If you ask #1 "Scientific name of species in bgee with their uniprot taxon", Species would be the main topic, the uniprot taxon and the scientific names the list values.</p>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row" id="downloadbutton">
+				<div id="loady" class="col-3 btn btn-light" onclick="highlightShortest();" style="cursor: pointer; z-index: 4; padding: 0.5em; margin: 0 auto; border-radius: 0.3em; border: 2px #D2D1E8 solid;">
+					<span class="fas fa-plus-square mr-1"></span>
+					Add alternative columns &amp; reload preview data
+				</div>
+				<div id="csvloady" class="col-3 btn btn-light" onclick="loadFinalData();" style="cursor: pointer; z-index: 4; padding: 0.5em; margin: 0 auto; border-radius: 0.3em; border: 2px #D2D1E8 solid;">
+					<span class="fas fa-download mr-1"></span>
+					Load whole data as CSV
+				</div>
+				<div id="showSPARQL" class="col-3 btn btn-light" onclick="showSPARQL();" style="cursor: pointer; z-index: 4; padding: 0.5em; margin: 0 auto; border-radius: 0.3em; border: 2px #D2D1E8 solid;">
+					<span class="fas fa-microchip mr-1"></span>
+					Show SPARQL query
+				</div>
+			</div>
+			
+			<div class="row" id="datatable">
+				<div class="col-12">
+					<div class="loader" style="display: none;"><div class="spinner-border spinner-border-sm" role="status" style="color: #26348B;"><span class="sr-only">Loading...</span></div></div>
+					<div style="display: none;" class="badge badge-warning">Click on the graph above to shape your results data sheet. Indicate what is your main topic and which values you need to be listed.</div>
+					<table id="example" class="table table-striped table-bordered double-scroll" style="width:100%; position: relative;">
+						
+					</table>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div id="footer" style="font-size: 0.666em; text-align: center; font-family: monospace; padding: 0.3em; font-weight: bold;">
+			This research project is (was) part of the National Research Programme "Big Data" (NRP 75) of the Swiss National Science Foundation (SNSF). Further information on the National Research Programme can be found at <a href="http://www.nfp75.ch/de/projekte/modul-3-anwendungen/projekt-stockinger" target="_blank">www.nrp75.ch</a> or <a href="https://bigdata-dialog.ch/" target="_blank">https://bigdata-dialog.ch/</a>
+			- <a href="https://doi.org/10.1101/686600" target="_blank">Paper 1</a> - <a href="http://www.semantic-web-journal.net/content/bio-soda-question-answering-system-domain-knowledge-graphs" target="_blank">Paper 2</a> - <a href="http://biosoda-prod.cloudlab.zhaw.ch:8080/build_biosodafrontend/" target="_blank">SPARQL-Interface</a>
+		</div>
+		
+		<!-- bounding box is used for measuring the bounding boxes for parts of the query -->
+		<div id="boundingbox"></div>
+		
+		<script src="js/jquery.min.js"></script>
+		<script src="js/popper.js"></script>
+		<script src="js/vendor/bootstrap.js"></script>
+		<script src="js/plugins.js"></script>
+		<script src="js/d3.5.16.js"></script>
+		<script src="js/d3.selection-multi.min.js"></script>
+		<script src="js/jquery.doubleScroll.js"></script>
+		<script src="js/main.js"></script>
+	</body>
+	
+</html>

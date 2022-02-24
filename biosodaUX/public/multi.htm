@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>title</title>
+		<link href="css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/popper.js"></script>
+		<script src="js/vendor/bootstrap.js"></script>
+		<style>
+			.dropdown-menu a {
+			margin-left: 2em;
+			}
+			.dropdown-menu a.supper {
+			font-weight: bold;
+			margin-left: 0em;
+			}
+			.minor { font-weight: normal; font-size: 0.666em; }
+			.filter {
+			font-style: italic;
+			}
+			.dropdown-menu {
+			overflow: hidden;
+			}
+			navnav {
+			display: block;
+			height: 2em;
+			overflow: hidden;
+			transition: height 2s;
+			}
+			navnav:hover {
+			height: 10em;
+			}
+			nuvnuv {
+				display: block;
+				min-height: 2em;
+				max-height: 8em;
+				overflow-y: auto;
+				overflow-x: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="btn-group" data-replacetext="drosophila" data-conceptindex="0">
+			<button type="button" class="btn btn-success btn-title" title="AnatomicalEntity:UBERON_0002268" style="background-color: rgb(110, 64, 170); border-color: rgb(110, 64, 170);">drosophila</button>
+			<button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="background-color: rgb(110, 64, 170); border-color: rgb(110, 64, 170);">
+				<span class="sr-only">Toggle Dropdown</span>
+			</button>
+			<div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(88px, 26px, 0px); top: 0px; left: 0px; will-change: transform;">
+				<navnav>
+					<a class="dropdown-item supper" href="#">AnatomicalEntity <span class="minor">select all of this kind containing <span class="filter">drosophila</span></span></a>
+					<nuvnuv>
+						<a class="dropdown-item active" href="#">crop (Drosophila)</a>
+						<a class="dropdown-item" href="#">gastric caecum (Drosophila)</a>
+						<a class="dropdown-item" href="#">An organ that houses olfactory neurons and is responsible for the sense of smell.</a>
+					</nuvnuv>
+				</navnav>
+				
+				<navnav>
+					<a class="dropdown-item supper" href="#">Taxon <span class="minor">select all of this kind containing <span class="filter">drosophila</span></span></a>
+					<nuvnuv>
+						<a class="dropdown-item" href="#">Drosophila yakuba</a>
+						<a class="dropdown-item" href="#">Drosophila melanogaster</a>
+						<a class="dropdown-item" href="#">Drosophila bipectinata</a>
+						<a class="dropdown-item" href="#">Drosophila grimshawi</a>
+						<a class="dropdown-item" href="#">Drosophila persimilis</a>
+						<a class="dropdown-item" href="#">Drosophila dreyfusi</a>
+						<a class="dropdown-item" href="#">Drosophila macroptera</a>
+					</nuvnuv>
+				</navnav>
+				
+				<navnav>
+					<a class="dropdown-item supper" href="#">developmental stage <span class="minor">select all of this kind containing <span class="filter">drosophila</span></span></a>
+					<nuvnuv>
+						<a class="dropdown-item" href="#">prepupal stage (Drosophila)</a>
+						<a class="dropdown-item" href="#">The stage of Drosophila mojavensis life-cycle from the 5th day post-eclosion to 8th day post-eclosion.</a>
+						<nuvnuv>
+						</navnav>
+						
+						<navnav>
+							<a class="dropdown-item supper" href="#">Gene <span class="minor">select all of this kind containing <span class="filter">drosophila</span></span></a>
+							<nuvnuv>
+								<a class="dropdown-item" href="#">OAF homolog (Drosophila) [Source:MGI Symbol;Acc:MGI:94852]</a>
+							</nuvnuv>
+						</navnav>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#" data-concept="0">Remove / don't include</a>
+					</div>
+				</div>
+			</body>
+		</html>		
